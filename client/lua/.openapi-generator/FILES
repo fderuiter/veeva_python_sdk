@@ -1,0 +1,8 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+openapiclient-1.0.0-1.rockspec
+openapiclient/api/default_api.lua
+openapiclient/model/_vobjects__object_name__actions_merge_post_request_inner.lua
+spec/_vobjects__object_name__actions_merge_post_request_inner_spec.lua
+spec/default_api_spec.lua
