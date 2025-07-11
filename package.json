@@ -6,6 +6,6 @@
     "swagger-cli": "^4.0.4"
   },
   "scripts": {
-    "test": "swagger-cli validate imednet/openapi.yaml"
+    "test": "swagger-cli validate spec/openapi.yaml"
   }
 }
