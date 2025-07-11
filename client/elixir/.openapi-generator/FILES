@@ -1,0 +1,13 @@
+.formatter.exs
+.gitignore
+.openapi-generator-ignore
+README.md
+config/config.exs
+config/runtime.exs
+lib/veeva_vault_apiv251/api/default.ex
+lib/veeva_vault_apiv251/connection.ex
+lib/veeva_vault_apiv251/deserializer.ex
+lib/veeva_vault_apiv251/model/_vobjects__object_name__actions_merge_post_request_inner.ex
+lib/veeva_vault_apiv251/request_builder.ex
+mix.exs
+test/test_helper.exs
