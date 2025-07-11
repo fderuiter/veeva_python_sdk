@@ -1,4 +1,6 @@
 
+[![Generate OpenAPI clients](https://github.com/fderuiter/veeva_sdk_collection/actions/workflows/generate-clients.yml/badge.svg)](https://github.com/fderuiter/veeva_sdk_collection/actions/workflows/generate-clients.yml)
+
 # Veeva Vault OpenAPI Client SDK Generator
 
 This project takes the Veeva Vault OpenAPI specification (`spec/openapi.yaml`) and automatically generates client SDKs for **all languages supported by the OpenAPI Generator** using GitHub Actions workflows.
