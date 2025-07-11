@@ -1,0 +1,21 @@
+{ application, openapi
+, [ {description, "The latest GA version of the Vault REST API."}
+  , {vsn, "0.1.0"}
+  , {registered, []}
+  , { applications
+    , [ kernel
+      , stdlib
+      , ssl
+      , jsx
+      ]
+    }
+  , { env
+    , [ {host, "http://}"}
+      , {basic_auth, {"admin", "admin"}}
+      ]
+    }
+  , {modules, []}
+  , {maintainers, []}
+  , {licenses, []}
+  , {links, []}
+]}.
