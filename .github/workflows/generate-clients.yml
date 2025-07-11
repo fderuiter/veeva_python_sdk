@@ -135,19 +135,3 @@ jobs:
           git commit -m "feat(${{ matrix.lang }}): regenerate client from ${GITHUB_SHA}" \
             || echo "No changes"
           git push --force origin "$LANG_BRANCH"
-
-      - name: Copy client code to clients folder in main branch
-        run: |
-          if [ -d "client/${{ matrix.lang }}" ] && [ -n "$(ls -A client/${{ matrix.lang }})" ]; then
-            git fetch origin
-            git checkout main
-            mkdir -p clients/${{ matrix.lang }}
-            cp -r client/${{ matrix.lang }}/* clients/${{ matrix.lang }}/
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git config user.name  "github-actions[bot]"
-            git add clients/${{ matrix.lang }}
-            git commit -m "chore: update clients/${{ matrix.lang }} SDK from ${GITHUB_SHA}" || echo "No changes"
-            git push origin main
-          else
-            echo "No client code to copy for ${{ matrix.lang }}. Skipping commit and push."
-          fi
