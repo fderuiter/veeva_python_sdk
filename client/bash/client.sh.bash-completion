@@ -1,0 +1,1328 @@
+#  completion                               -*- shell-script -*-
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !
+# ! Note:
+# !
+# ! THIS SCRIPT HAS BEEN AUTOMATICALLY GENERATED USING
+# ! openapi-generator (https://openapi-generator.tech)
+# ! FROM OPENAPI SPECIFICATION IN JSON.
+# !
+# ! Generator version: 7.14.0
+# !
+# !
+# ! System wide installation:
+# !
+# ! $ sudo cp .bash-completion /etc/bash-completion.d/
+# !
+# !
+# ! User home installation (add this line to .bash_profile):
+# !
+# ! [ -r ~/.bash-completion ] && source ~/.bash-completion
+# !
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+declare -A mime_type_abbreviations
+# text/*
+mime_type_abbreviations["text"]="text/plain"
+mime_type_abbreviations["html"]="text/html"
+mime_type_abbreviations["md"]="text/x-markdown"
+mime_type_abbreviations["csv"]="text/csv"
+mime_type_abbreviations["css"]="text/css"
+mime_type_abbreviations["rtf"]="text/rtf"
+# application/*
+mime_type_abbreviations["json"]="application/json"
+mime_type_abbreviations["xml"]="application/xml"
+mime_type_abbreviations["yaml"]="application/yaml"
+mime_type_abbreviations["js"]="application/javascript"
+mime_type_abbreviations["bin"]="application/octet-stream"
+mime_type_abbreviations["rdf"]="application/rdf+xml"
+# image/*
+mime_type_abbreviations["jpg"]="image/jpeg"
+mime_type_abbreviations["png"]="image/png"
+mime_type_abbreviations["gif"]="image/gif"
+mime_type_abbreviations["bmp"]="image/bmp"
+mime_type_abbreviations["tiff"]="image/tiff"
+
+
+#
+# Check if this is OSX, if so defined custom init_completion
+#
+if [[ `uname` =~ "Darwin" ]]; then
+    __osx_init_completion()
+    {
+        COMPREPLY=()
+        _get_comp_words_by_ref cur prev words cword
+    }
+fi
+
+_()
+{
+    local cur
+    local prev
+    local words
+    local cword
+
+    # The reference of currently selected REST operation
+    local operation=""
+
+    # The list of available operation in the REST service
+    # It's modelled as an associative array for efficient key lookup
+    declare -A operations
+    operations["apiGet"]=1
+    operations["apiMdlComponentsComponentTypeAndRecordNameFilesGet"]=1
+    operations["apiMdlComponentsComponentTypeAndRecordNameGet"]=1
+    operations["apiMdlExecuteAsyncJobIdResultsGet"]=1
+    operations["apiMdlExecuteAsyncPost"]=1
+    operations["apiMdlExecutePost"]=1
+    operations["apiMdlFilesPost"]=1
+    operations["audittrailAuditTrailTypeGet"]=1
+    operations["authDiscoveryPost"]=1
+    operations["authOauthSessionOathOidcProfileIdPost"]=1
+    operations["authPost"]=1
+    operations["codeClassNameDelete"]=1
+    operations["codeClassNameDisablePut"]=1
+    operations["codeClassNameEnablePut"]=1
+    operations["codeClassNameGet"]=1
+    operations["codeProfilerGet"]=1
+    operations["codeProfilerPost"]=1
+    operations["codeProfilerSessionNameActionsEndPost"]=1
+    operations["codeProfilerSessionNameDelete"]=1
+    operations["codeProfilerSessionNameGet"]=1
+    operations["codeProfilerSessionNameResultsGet"]=1
+    operations["codePut"]=1
+    operations["compositesTreesEdlHierarchyOrTemplateActionsListnodesPost"]=1
+    operations["compositesTreesEdlHierarchyOrTemplateGet"]=1
+    operations["compositesTreesEdlHierarchyVParentNodeIdChildrenGet"]=1
+    operations["compositesTreesEdlHierarchyVParentNodeIdChildrenPut"]=1
+    operations["configurationComponentTypeAndRecordNameGet"]=1
+    operations["configurationComponentTypeGet"]=1
+    operations["configurationObjectNameAndObjectTypeGet"]=1
+    operations["configurationObjecttypeGet"]=1
+    operations["configurationRoleAssignmentRuleDelete"]=1
+    operations["configurationRoleAssignmentRuleGet"]=1
+    operations["configurationRoleAssignmentRulePost"]=1
+    operations["configurationRoleAssignmentRulePut"]=1
+    operations["delegationLoginPost"]=1
+    operations["delegationVaultsGet"]=1
+    operations["keepAlivePost"]=1
+    operations["limitsGet"]=1
+    operations["logsApiUsageGet"]=1
+    operations["logsCodeDebugGet"]=1
+    operations["logsCodeDebugIdActionsResetDelete"]=1
+    operations["logsCodeDebugIdActionsResetPost"]=1
+    operations["logsCodeDebugIdFilesGet"]=1
+    operations["logsCodeDebugIdGet"]=1
+    operations["logsCodeDebugPost"]=1
+    operations["logsCodeRuntimeGet"]=1
+    operations["messagesMessageTypeActionsImportPost"]=1
+    operations["messagesMessageTypeLanguageLangActionsExportPost"]=1
+    operations["metadataAudittrailAuditTrailTypeGet"]=1
+    operations["metadataAudittrailGet"]=1
+    operations["metadataComponentsComponentTypeGet"]=1
+    operations["metadataComponentsGet"]=1
+    operations["metadataObjectsBindersTemplatesBindernodesGet"]=1
+    operations["metadataObjectsBindersTemplatesGet"]=1
+    operations["metadataObjectsDocumentsAnnotationsPlacemarksTypesPlacemarkTypeGet"]=1
+    operations["metadataObjectsDocumentsAnnotationsReferencesTypesReferenceTypeGet"]=1
+    operations["metadataObjectsDocumentsAnnotationsTypesAnnotationTypeGet"]=1
+    operations["metadataObjectsDocumentsEventsEventTypeTypesEventSubtypeGet"]=1
+    operations["metadataObjectsDocumentsEventsGet"]=1
+    operations["metadataObjectsDocumentsLockGet"]=1
+    operations["metadataObjectsDocumentsPropertiesFindCommonPost"]=1
+    operations["metadataObjectsDocumentsPropertiesGet"]=1
+    operations["metadataObjectsDocumentsTemplatesGet"]=1
+    operations["metadataObjectsDocumentsTypesGet"]=1
+    operations["metadataObjectsDocumentsTypesTypeGet"]=1
+    operations["metadataObjectsDocumentsTypesTypeRelationshipsGet"]=1
+    operations["metadataObjectsDocumentsTypesTypeSubtypesSubtypeClassificationsClassificationGet"]=1
+    operations["metadataObjectsDocumentsTypesTypeSubtypesSubtypeGet"]=1
+    operations["metadataObjectsGroupsGet"]=1
+    operations["metadataObjectsSecuritypoliciesGet"]=1
+    operations["metadataObjectsUsersGet"]=1
+    operations["metadataQueryArchivedDocumentsRelationshipsDocumentSignatureSysrGet"]=1
+    operations["metadataQueryDocumentsRelationshipsDocumentSignatureSysrGet"]=1
+    operations["metadataVobjectsGet"]=1
+    operations["metadataVobjectsObjectNameActionsCanceldeploymentPost"]=1
+    operations["metadataVobjectsObjectNameFieldsObjectFieldNameGet"]=1
+    operations["metadataVobjectsObjectNameGet"]=1
+    operations["metadataVobjectsObjectNamePageLayoutsGet"]=1
+    operations["metadataVobjectsObjectNamePageLayoutsLayoutNameGet"]=1
+    operations["notificationsHistoriesGet"]=1
+    operations["objectWorkflowActionsActionGet"]=1
+    operations["objectWorkflowActionsActionPost"]=1
+    operations["objectWorkflowActionsCanceltasksPost"]=1
+    operations["objectWorkflowActionsCancelworkflowsPost"]=1
+    operations["objectWorkflowActionsGet"]=1
+    operations["objectWorkflowActionsReassigntasksPost"]=1
+    operations["objectWorkflowActionsReplaceworkflowownerPost"]=1
+    operations["objectsBindersActionsExportJobIdResultsGet"]=1
+    operations["objectsBindersBinderIdActionsExportPost"]=1
+    operations["objectsBindersBinderIdActionsPost"]=1
+    operations["objectsBindersBinderIdBindingRulePut"]=1
+    operations["objectsBindersBinderIdDelete"]=1
+    operations["objectsBindersBinderIdDocumentsNodeIdBindingRulePut"]=1
+    operations["objectsBindersBinderIdDocumentsPost"]=1
+    operations["objectsBindersBinderIdDocumentsSectionIdDelete"]=1
+    operations["objectsBindersBinderIdDocumentsSectionIdPut"]=1
+    operations["objectsBindersBinderIdGet"]=1
+    operations["objectsBindersBinderIdPost"]=1
+    operations["objectsBindersBinderIdPut"]=1
+    operations["objectsBindersBinderIdRolesRoleNameAndUserOrGroupIdDelete"]=1
+    operations["objectsBindersBinderIdSectionsNodeIdBindingRulePut"]=1
+    operations["objectsBindersBinderIdSectionsNodeIdPut"]=1
+    operations["objectsBindersBinderIdSectionsPost"]=1
+    operations["objectsBindersBinderIdSectionsSectionIdDelete"]=1
+    operations["objectsBindersBinderIdSectionsSectionIdGet"]=1
+    operations["objectsBindersBinderIdVersionsGet"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionDelete"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionGet"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionPut"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionRelationshipsPost"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdDelete"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdGet"]=1
+    operations["objectsBindersBinderIdVersionsMajorVersionMinorVersionSectionsSectionIdGet"]=1
+    operations["objectsBindersIdRolesGet"]=1
+    operations["objectsBindersIdRolesPost"]=1
+    operations["objectsBindersIdRolesRoleNameGet"]=1
+    operations["objectsBindersIdVersionsMajorVersionMinorVersionLifecycleActionsGet"]=1
+    operations["objectsBindersIdVersionsMajorVersionMinorVersionLifecycleActionsNameVEntryRequirementsGet"]=1
+    operations["objectsBindersIdVersionsMajorVersionMinorVersionLifecycleActionsNameVPut"]=1
+    operations["objectsBindersLifecycleActionsPost"]=1
+    operations["objectsBindersLifecycleActionsUserActionNamePut"]=1
+    operations["objectsBindersPost"]=1
+    operations["objectsBindersTemplatesGet"]=1
+    operations["objectsBindersTemplatesPost"]=1
+    operations["objectsBindersTemplatesPut"]=1
+    operations["objectsBindersTemplatesTemplateNameBindernodesGet"]=1
+    operations["objectsBindersTemplatesTemplateNameBindernodesPost"]=1
+    operations["objectsBindersTemplatesTemplateNameBindernodesPut"]=1
+    operations["objectsBindersTemplatesTemplateNameDelete"]=1
+    operations["objectsBindersTemplatesTemplateNameGet"]=1
+    operations["objectsDeletionsDocumentsGet"]=1
+    operations["objectsDeletionsVobjectsObjectNameGet"]=1
+    operations["objectsDocumentsActionsGet"]=1
+    operations["objectsDocumentsActionsLifecycleAndStateAndActionJobIdResultsGet"]=1
+    operations["objectsDocumentsActionsWorkflowNameGet"]=1
+    operations["objectsDocumentsActionsWorkflowNamePost"]=1
+    operations["objectsDocumentsAnnotationsBatchDelete"]=1
+    operations["objectsDocumentsAnnotationsBatchPost"]=1
+    operations["objectsDocumentsAnnotationsBatchPut"]=1
+    operations["objectsDocumentsAnnotationsRepliesBatchPost"]=1
+    operations["objectsDocumentsAttachmentsBatchDelete"]=1
+    operations["objectsDocumentsAttachmentsBatchPost"]=1
+    operations["objectsDocumentsAttachmentsBatchPut"]=1
+    operations["objectsDocumentsBatchActionsFileextractJobIdResultsGet"]=1
+    operations["objectsDocumentsBatchActionsFileextractPost"]=1
+    operations["objectsDocumentsBatchActionsReclassifyPut"]=1
+    operations["objectsDocumentsBatchActionsRerenderPost"]=1
+    operations["objectsDocumentsBatchDelete"]=1
+    operations["objectsDocumentsBatchLockDelete"]=1
+    operations["objectsDocumentsBatchPost"]=1
+    operations["objectsDocumentsBatchPut"]=1
+    operations["objectsDocumentsDocIdAnchorsGet"]=1
+    operations["objectsDocumentsDocIdAnnotationsFileGet"]=1
+    operations["objectsDocumentsDocIdAnnotationsFilePost"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdDelete"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdFileGet"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdGet"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdPut"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionDelete"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionFileGet"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionGet"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost"]=1
+    operations["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsGet"]=1
+    operations["objectsDocumentsDocIdAttachmentsFileGet"]=1
+    operations["objectsDocumentsDocIdAttachmentsGet"]=1
+    operations["objectsDocumentsDocIdAttachmentsPost"]=1
+    operations["objectsDocumentsDocIdAudittrailGet"]=1
+    operations["objectsDocumentsDocIdDelete"]=1
+    operations["objectsDocumentsDocIdEventsGet"]=1
+    operations["objectsDocumentsDocIdFileGet"]=1
+    operations["objectsDocumentsDocIdGet"]=1
+    operations["objectsDocumentsDocIdLockDelete"]=1
+    operations["objectsDocumentsDocIdLockGet"]=1
+    operations["objectsDocumentsDocIdLockPost"]=1
+    operations["objectsDocumentsDocIdMajorVersionMinorVersionAttachmentsFileGet"]=1
+    operations["objectsDocumentsDocIdPost"]=1
+    operations["objectsDocumentsDocIdPut"]=1
+    operations["objectsDocumentsDocIdRenditionsGet"]=1
+    operations["objectsDocumentsDocIdRenditionsRenditionTypeDelete"]=1
+    operations["objectsDocumentsDocIdRenditionsRenditionTypeGet"]=1
+    operations["objectsDocumentsDocIdRenditionsRenditionTypePost"]=1
+    operations["objectsDocumentsDocIdRenditionsRenditionTypePut"]=1
+    operations["objectsDocumentsDocIdRolesRoleNameAndUserOrGroupIdDelete"]=1
+    operations["objectsDocumentsDocIdVersionMajorVersionMinorVersionAttachmentsGet"]=1
+    operations["objectsDocumentsDocIdVersionsGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsAnnotationIdGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsAnnotationIdRepliesGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsFileGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsFilePost"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAttachmentsAttachmentIdVersionsAttachmentVersionFileGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAttachmentsAttachmentIdVersionsAttachmentVersionGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionDelete"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionDocExportAnnotationsToCsvGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionEventsPost"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionExportVideoAnnotationsGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionFileGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsPost"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdDelete"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypeDelete"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypeGet"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypePost"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypePut"]=1
+    operations["objectsDocumentsDocIdVersionsMajorVersionMinorVersionThumbnailGet"]=1
+    operations["objectsDocumentsGet"]=1
+    operations["objectsDocumentsIdRolesGet"]=1
+    operations["objectsDocumentsIdRolesPost"]=1
+    operations["objectsDocumentsIdRolesRoleNameGet"]=1
+    operations["objectsDocumentsIdVersionsMajorVersionMinorVersionLifecycleActionsGet"]=1
+    operations["objectsDocumentsIdVersionsMajorVersionMinorVersionLifecycleActionsNameVEntryRequirementsGet"]=1
+    operations["objectsDocumentsIdVersionsMajorVersionMinorVersionLifecycleActionsNameVPut"]=1
+    operations["objectsDocumentsLifecycleActionsPost"]=1
+    operations["objectsDocumentsLifecycleActionsUserActionNamePut"]=1
+    operations["objectsDocumentsPost"]=1
+    operations["objectsDocumentsRelationshipsBatchDelete"]=1
+    operations["objectsDocumentsRelationshipsBatchPost"]=1
+    operations["objectsDocumentsRenditionsBatchDelete"]=1
+    operations["objectsDocumentsRenditionsBatchPost"]=1
+    operations["objectsDocumentsRolesBatchDelete"]=1
+    operations["objectsDocumentsRolesBatchPost"]=1
+    operations["objectsDocumentsTemplatesGet"]=1
+    operations["objectsDocumentsTemplatesPost"]=1
+    operations["objectsDocumentsTemplatesPut"]=1
+    operations["objectsDocumentsTemplatesTemplateNameDelete"]=1
+    operations["objectsDocumentsTemplatesTemplateNameFileGet"]=1
+    operations["objectsDocumentsTemplatesTemplateNameGet"]=1
+    operations["objectsDocumentsTemplatesTemplateNamePut"]=1
+    operations["objectsDocumentsTokensPost"]=1
+    operations["objectsDocumentsVersionsBatchActionsFileextractPost"]=1
+    operations["objectsDocumentsVersionsBatchDelete"]=1
+    operations["objectsDocumentsVersionsBatchPost"]=1
+    operations["objectsDomainGet"]=1
+    operations["objectsDomainsGet"]=1
+    operations["objectsEdlMatchedDocumentsBatchActionsAddPost"]=1
+    operations["objectsEdlMatchedDocumentsBatchActionsRemovePost"]=1
+    operations["objectsGroupsAutoGet"]=1
+    operations["objectsGroupsGet"]=1
+    operations["objectsGroupsGroupIdDelete"]=1
+    operations["objectsGroupsGroupIdGet"]=1
+    operations["objectsGroupsGroupIdPut"]=1
+    operations["objectsGroupsPost"]=1
+    operations["objectsLicensesGet"]=1
+    operations["objectsObjectworkflowsActionsGet"]=1
+    operations["objectsObjectworkflowsActionsWorkflowNameGet"]=1
+    operations["objectsObjectworkflowsActionsWorkflowNamePost"]=1
+    operations["objectsObjectworkflowsGet"]=1
+    operations["objectsObjectworkflowsTasksGet"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsAcceptPost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsCancelPost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsCompletePost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsGet"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsMdwacceptPost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsMdwcompletePost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsMdwmanagecontentPost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsMdwreassignPost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsReassignPost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsTaskActionGet"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsUndoacceptPost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdActionsUpdateduedatePost"]=1
+    operations["objectsObjectworkflowsTasksTaskIdGet"]=1
+    operations["objectsObjectworkflowsWorkflowIdActionsGet"]=1
+    operations["objectsObjectworkflowsWorkflowIdActionsWorkflowActionGet"]=1
+    operations["objectsObjectworkflowsWorkflowIdActionsWorkflowActionPost"]=1
+    operations["objectsObjectworkflowsWorkflowIdGet"]=1
+    operations["objectsPicklistsGet"]=1
+    operations["objectsPicklistsPicklistNameGet"]=1
+    operations["objectsPicklistsPicklistNamePicklistValueNameDelete"]=1
+    operations["objectsPicklistsPicklistNamePicklistValueNamePut"]=1
+    operations["objectsPicklistsPicklistNamePost"]=1
+    operations["objectsPicklistsPicklistNamePut"]=1
+    operations["objectsSandboxActionsBuildproductionPost"]=1
+    operations["objectsSandboxActionsPromoteproductionPost"]=1
+    operations["objectsSandboxActionsRecheckusagePost"]=1
+    operations["objectsSandboxBatchChangesizePost"]=1
+    operations["objectsSandboxEntitlementsSetPost"]=1
+    operations["objectsSandboxGet"]=1
+    operations["objectsSandboxNameDelete"]=1
+    operations["objectsSandboxPost"]=1
+    operations["objectsSandboxSnapshotApiNameActionsUpdatePost"]=1
+    operations["objectsSandboxSnapshotApiNameActionsUpgradePost"]=1
+    operations["objectsSandboxSnapshotApiNameDelete"]=1
+    operations["objectsSandboxSnapshotGet"]=1
+    operations["objectsSandboxSnapshotPost"]=1
+    operations["objectsSandboxVaultIdActionsRefreshPost"]=1
+    operations["objectsSandboxVaultIdGet"]=1
+    operations["objectsSecuritypoliciesGet"]=1
+    operations["objectsSecuritypoliciesSecurityPolicyNameGet"]=1
+    operations["objectsUsersGet"]=1
+    operations["objectsUsersIdGet"]=1
+    operations["objectsUsersIdPermissionsGet"]=1
+    operations["objectsUsersIdPut"]=1
+    operations["objectsUsersMeGet"]=1
+    operations["objectsUsersMePasswordPost"]=1
+    operations["objectsUsersMePermissionsGet"]=1
+    operations["objectsUsersMePut"]=1
+    operations["objectsUsersPost"]=1
+    operations["objectsUsersPut"]=1
+    operations["objectsUsersUserIdDelete"]=1
+    operations["objectsUsersUserIdVaultMembershipVaultIdPut"]=1
+    operations["objectsVaultActionsComparePost"]=1
+    operations["objectsVaultActionsConfigreportPost"]=1
+    operations["queryComponentsPost"]=1
+    operations["queryNextPagePost"]=1
+    operations["queryPost"]=1
+    operations["queryPreviousPagePost"]=1
+    operations["scimV2MeGet"]=1
+    operations["scimV2MePut"]=1
+    operations["scimV2ResourceTypesGet"]=1
+    operations["scimV2ResourceTypesTypeGet"]=1
+    operations["scimV2SchemasGet"]=1
+    operations["scimV2SchemasIdGet"]=1
+    operations["scimV2ServiceProviderConfigGet"]=1
+    operations["scimV2TypeGet"]=1
+    operations["scimV2TypeIdGet"]=1
+    operations["scimV2UsersGet"]=1
+    operations["scimV2UsersIdGet"]=1
+    operations["scimV2UsersIdPut"]=1
+    operations["scimV2UsersPost"]=1
+    operations["servicesCertificateCertIdGet"]=1
+    operations["servicesConfigurationModeActionsDisablePost"]=1
+    operations["servicesConfigurationModeActionsEnablePost"]=1
+    operations["servicesDirectdataFilesGet"]=1
+    operations["servicesDirectdataFilesNameGet"]=1
+    operations["servicesFileStagingItemsContentItemGet"]=1
+    operations["servicesFileStagingItemsItemDelete"]=1
+    operations["servicesFileStagingItemsItemGet"]=1
+    operations["servicesFileStagingItemsItemPut"]=1
+    operations["servicesFileStagingItemsPost"]=1
+    operations["servicesFileStagingUploadGet"]=1
+    operations["servicesFileStagingUploadPost"]=1
+    operations["servicesFileStagingUploadUploadSessionIdDelete"]=1
+    operations["servicesFileStagingUploadUploadSessionIdGet"]=1
+    operations["servicesFileStagingUploadUploadSessionIdPartsGet"]=1
+    operations["servicesFileStagingUploadUploadSessionIdPost"]=1
+    operations["servicesFileStagingUploadUploadSessionIdPut"]=1
+    operations["servicesJobsHistoriesGet"]=1
+    operations["servicesJobsJobIdErrorsGet"]=1
+    operations["servicesJobsJobIdGet"]=1
+    operations["servicesJobsJobIdSummaryGet"]=1
+    operations["servicesJobsJobIdTasksGet"]=1
+    operations["servicesJobsMonitorsGet"]=1
+    operations["servicesJobsStartNowJobIdPost"]=1
+    operations["servicesLoaderExtractPost"]=1
+    operations["servicesLoaderJobIdTasksTaskIdFailurelogGet"]=1
+    operations["servicesLoaderJobIdTasksTaskIdResultsGet"]=1
+    operations["servicesLoaderJobIdTasksTaskIdResultsRenditionsGet"]=1
+    operations["servicesLoaderJobIdTasksTaskIdSuccesslogGet"]=1
+    operations["servicesLoaderLoadPost"]=1
+    operations["servicesPackageActionsValidatePost"]=1
+    operations["servicesPackagePost"]=1
+    operations["servicesPackagePut"]=1
+    operations["servicesQueuesGet"]=1
+    operations["servicesQueuesQueueNameActionsDisableDeliveryPut"]=1
+    operations["servicesQueuesQueueNameActionsEnableDeliveryPut"]=1
+    operations["servicesQueuesQueueNameActionsResetPut"]=1
+    operations["servicesQueuesQueueNameGet"]=1
+    operations["servicesVobjectVaultPackageVPackageIdActionsValidatePost"]=1
+    operations["sessionDelete"]=1
+    operations["uicodeDistributionsDistributionNameCodeGet"]=1
+    operations["uicodeDistributionsDistributionNameDelete"]=1
+    operations["uicodeDistributionsDistributionNameGet"]=1
+    operations["uicodeDistributionsGet"]=1
+    operations["uicodeDistributionsPost"]=1
+    operations["vobjectVaultPackageVPackageIdActionsDeployPost"]=1
+    operations["vobjectVaultPackageVPackageIdActionsDeployResultsGet"]=1
+    operations["vobjectsCascadedeleteResultsObjectNameJobStatusJobIdGet"]=1
+    operations["vobjectsDeepcopyResultsObjectNameJobStatusJobIdGet"]=1
+    operations["vobjectsEdlItemVActionsCreateplaceholderPost"]=1
+    operations["vobjectsMergesJobIdLogGet"]=1
+    operations["vobjectsMergesJobIdResultsGet"]=1
+    operations["vobjectsMergesJobIdStatusGet"]=1
+    operations["vobjectsObjectNameActionsActionNamePost"]=1
+    operations["vobjectsObjectNameActionsChangetypePost"]=1
+    operations["vobjectsObjectNameActionsMergePost"]=1
+    operations["vobjectsObjectNameActionsRecalculaterollupsGet"]=1
+    operations["vobjectsObjectNameActionsRecalculaterollupsPost"]=1
+    operations["vobjectsObjectNameActionsUpdatecorporatecurrencyPut"]=1
+    operations["vobjectsObjectNameAttachmentsBatchDelete"]=1
+    operations["vobjectsObjectNameAttachmentsBatchPost"]=1
+    operations["vobjectsObjectNameAttachmentsBatchPut"]=1
+    operations["vobjectsObjectNameDelete"]=1
+    operations["vobjectsObjectNameIdRolesRoleNameGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdActionsActionNameGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdActionsActionNamePost"]=1
+    operations["vobjectsObjectNameObjectRecordIdActionsCascadedeletePost"]=1
+    operations["vobjectsObjectNameObjectRecordIdActionsDeepcopyPost"]=1
+    operations["vobjectsObjectNameObjectRecordIdActionsGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentFieldsAttachmentFieldNameFileGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentFieldsAttachmentFieldNameFilePost"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentFieldsFileGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdDelete"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdPut"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionDelete"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionFileGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsFileGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdAttachmentsPost"]=1
+    operations["vobjectsObjectNameObjectRecordIdAudittrailGet"]=1
+    operations["vobjectsObjectNameObjectRecordIdGet"]=1
+    operations["vobjectsObjectNamePost"]=1
+    operations["vobjectsObjectNamePut"]=1
+    operations["vobjectsObjectNameRolesDelete"]=1
+    operations["vobjectsObjectNameRolesPost"]=1
+    operations["vobjectsOutboundPackageVPackageIdDependenciesGet"]=1
+
+    # An associative array of operations to their parameters
+    # Only include path, query and header parameters
+    declare -A operation_parameters
+    operation_parameters["apiGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["apiMdlComponentsComponentTypeAndRecordNameFilesGet"]="component_type_and_record_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["apiMdlComponentsComponentTypeAndRecordNameGet"]="component_type_and_record_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["apiMdlExecuteAsyncJobIdResultsGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["apiMdlExecuteAsyncPost"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["apiMdlExecutePost"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["apiMdlFilesPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["audittrailAuditTrailTypeGet"]="audit_trail_type= start_date= end_date= all_dates= format_result= limit= offset= objects= events= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["authDiscoveryPost"]="Accept: X-VaultAPI-ClientID: "
+    operation_parameters["authOauthSessionOathOidcProfileIdPost"]="oath_oidc_profile_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["authPost"]="Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeClassNameDelete"]="class_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeClassNameDisablePut"]="class_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["codeClassNameEnablePut"]="class_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["codeClassNameGet"]="class_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeProfilerGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeProfilerPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeProfilerSessionNameActionsEndPost"]="session_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeProfilerSessionNameDelete"]="session_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeProfilerSessionNameGet"]="session_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codeProfilerSessionNameResultsGet"]="session_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["codePut"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["compositesTreesEdlHierarchyOrTemplateActionsListnodesPost"]="edl_hierarchy_or_template= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["compositesTreesEdlHierarchyOrTemplateGet"]="edl_hierarchy_or_template= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["compositesTreesEdlHierarchyVParentNodeIdChildrenGet"]="parent_node_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["compositesTreesEdlHierarchyVParentNodeIdChildrenPut"]="parent_node_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["configurationComponentTypeAndRecordNameGet"]="component_type_and_record_name= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["configurationComponentTypeGet"]="component_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["configurationObjectNameAndObjectTypeGet"]="object_name_and_object_type= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["configurationObjecttypeGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["configurationRoleAssignmentRuleDelete"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["configurationRoleAssignmentRuleGet"]="lifecycle__v= role__v= product__v= country__v= study__v= study_country__v= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["configurationRoleAssignmentRulePost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["configurationRoleAssignmentRulePut"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["delegationLoginPost"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["delegationVaultsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["keepAlivePost"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["limitsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["logsApiUsageGet"]="date= log_format= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["logsCodeDebugGet"]="user_id= include_inactive= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["logsCodeDebugIdActionsResetDelete"]="id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["logsCodeDebugIdActionsResetPost"]="id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["logsCodeDebugIdFilesGet"]="id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["logsCodeDebugIdGet"]="id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["logsCodeDebugPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["logsCodeRuntimeGet"]="date= log_format= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["messagesMessageTypeActionsImportPost"]="message_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["messagesMessageTypeLanguageLangActionsExportPost"]="message_type= lang= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataAudittrailAuditTrailTypeGet"]="audit_trail_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataAudittrailGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataComponentsComponentTypeGet"]="component_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataComponentsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsBindersTemplatesBindernodesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsBindersTemplatesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsAnnotationsPlacemarksTypesPlacemarkTypeGet"]="placemark_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsAnnotationsReferencesTypesReferenceTypeGet"]="reference_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsAnnotationsTypesAnnotationTypeGet"]="annotation_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsEventsEventTypeTypesEventSubtypeGet"]="event_type= event_subtype= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsEventsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsLockGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsPropertiesFindCommonPost"]="Content-Type: Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsPropertiesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsTemplatesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsTypesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsTypesTypeGet"]="type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsTypesTypeRelationshipsGet"]="type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsTypesTypeSubtypesSubtypeClassificationsClassificationGet"]="type= subtype= classification= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsDocumentsTypesTypeSubtypesSubtypeGet"]="type= subtype= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsGroupsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsSecuritypoliciesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataObjectsUsersGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataQueryArchivedDocumentsRelationshipsDocumentSignatureSysrGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataQueryDocumentsRelationshipsDocumentSignatureSysrGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataVobjectsGet"]="loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataVobjectsObjectNameActionsCanceldeploymentPost"]="object_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataVobjectsObjectNameFieldsObjectFieldNameGet"]="object_name= object_field_name= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataVobjectsObjectNameGet"]="object_name= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataVobjectsObjectNamePageLayoutsGet"]="object_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["metadataVobjectsObjectNamePageLayoutsLayoutNameGet"]="object_name= layout_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["notificationsHistoriesGet"]="start_date= end_date= all_dates= format_result= limit= offset= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectWorkflowActionsActionGet"]="action= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectWorkflowActionsActionPost"]="action= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectWorkflowActionsCanceltasksPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectWorkflowActionsCancelworkflowsPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectWorkflowActionsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectWorkflowActionsReassigntasksPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectWorkflowActionsReplaceworkflowownerPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersActionsExportJobIdResultsGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdActionsExportPost"]="binder_id= source= renditiontype= docversion= attachments= export= docfield= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdActionsPost"]="binder_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdBindingRulePut"]="binder_id= Content-Type: Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdDelete"]="binder_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdDocumentsNodeIdBindingRulePut"]="binder_id= node_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdDocumentsPost"]="binder_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdDocumentsSectionIdDelete"]="binder_id= section_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdDocumentsSectionIdPut"]="binder_id= section_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdGet"]="binder_id= depth= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdPost"]="binder_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdPut"]="binder_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdRolesRoleNameAndUserOrGroupIdDelete"]="binder_id= role_name_and_user_or_group= id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdSectionsNodeIdBindingRulePut"]="binder_id= node_id= Content-Type: Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdSectionsNodeIdPut"]="binder_id= node_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdSectionsPost"]="binder_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdSectionsSectionIdDelete"]="binder_id= section_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdSectionsSectionIdGet"]="binder_id= section_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsGet"]="binder_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost"]="binder_id= major_version= minor_version= source= renditiontype= docversion= attachments= export= docfield= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionDelete"]="binder_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionGet"]="binder_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionPut"]="binder_id= major_version= minor_version= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionRelationshipsPost"]="binder_id= major_version= minor_version= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdDelete"]="binder_id= major_version= minor_version= relationship_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdGet"]="binder_id= major_version= minor_version= relationship_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersBinderIdVersionsMajorVersionMinorVersionSectionsSectionIdGet"]="binder_id= major_version= minor_version= section_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersIdRolesGet"]="id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersIdRolesPost"]="id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersIdRolesRoleNameGet"]="id= role_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersIdVersionsMajorVersionMinorVersionLifecycleActionsGet"]="id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersIdVersionsMajorVersionMinorVersionLifecycleActionsNameVEntryRequirementsGet"]="id= major_version= minor_version= name__v= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersIdVersionsMajorVersionMinorVersionLifecycleActionsNameVPut"]="id= major_version= minor_version= name__v= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersLifecycleActionsPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersLifecycleActionsUserActionNamePut"]="user_action_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersPost"]="async= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesPut"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesTemplateNameBindernodesGet"]="template_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesTemplateNameBindernodesPost"]="template_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesTemplateNameBindernodesPut"]="template_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesTemplateNameDelete"]="template_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsBindersTemplatesTemplateNameGet"]="template_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDeletionsDocumentsGet"]="start_date= end_date= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDeletionsVobjectsObjectNameGet"]="object_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsActionsGet"]="loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsActionsLifecycleAndStateAndActionJobIdResultsGet"]="lifecycle_and_state_and_action= job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsActionsWorkflowNameGet"]="workflow_name= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsActionsWorkflowNamePost"]="workflow_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsAnnotationsBatchDelete"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsAnnotationsBatchPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsAnnotationsBatchPut"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsAnnotationsRepliesBatchPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsAttachmentsBatchDelete"]="Accept: Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsAttachmentsBatchPost"]="Accept: Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsAttachmentsBatchPut"]="Accept: Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchActionsFileextractJobIdResultsGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchActionsFileextractPost"]="source= renditions= allversions= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchActionsReclassifyPut"]="Authorization: Content-Type: Accept: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchActionsRerenderPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchDelete"]="idParam= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchLockDelete"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchPost"]="Authorization: Accept: Content-Type: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsBatchPut"]="Authorization: Accept: Content-Type: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAnchorsGet"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAnnotationsFileGet"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAnnotationsFilePost"]="doc_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdDelete"]="doc_id= attachment_id= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdFileGet"]="doc_id= attachment_id= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdGet"]="doc_id= attachment_id= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdPut"]="doc_id= attachment_id= Accept: Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionDelete"]="doc_id= attachment_id= attachment_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionFileGet"]="doc_id= attachment_id= attachment_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionGet"]="doc_id= attachment_id= attachment_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost"]="doc_id= attachment_id= attachment_version= restore= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsGet"]="doc_id= attachment_id= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsFileGet"]="doc_id= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsGet"]="doc_id= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAttachmentsPost"]="doc_id= Accept: Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdAudittrailGet"]="doc_id= start_date= end_date= format_result= limit= offset= events= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdDelete"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdEventsGet"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdFileGet"]="doc_id= lockDocument= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdGet"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdLockDelete"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdLockGet"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdLockPost"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdMajorVersionMinorVersionAttachmentsFileGet"]="doc_id= major_version= minor_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdPost"]="doc_id= suppressRendition= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdPut"]="doc_id= Authorization: Content-Type: Accept: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdRenditionsGet"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdRenditionsRenditionTypeDelete"]="doc_id= rendition_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdRenditionsRenditionTypeGet"]="doc_id= rendition_type= steadyState= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdRenditionsRenditionTypePost"]="doc_id= rendition_type= Authorization: Accept: Content Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdRenditionsRenditionTypePut"]="doc_id= rendition_type= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdRolesRoleNameAndUserOrGroupIdDelete"]="doc_id= role_name_and_user_or_group= id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionMajorVersionMinorVersionAttachmentsGet"]="doc_id= major_version= minor_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsGet"]="doc_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsAnnotationIdGet"]="doc_id= major_version= minor_version= annotation_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsAnnotationIdRepliesGet"]="doc_id= major_version= minor_version= annotation_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsFileGet"]="doc_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsFilePost"]="doc_id= major_version= minor_version= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAnnotationsGet"]="doc_id= major_version= minor_version= limit= offset= annotation_types= pagination_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAttachmentsAttachmentIdVersionsAttachmentVersionFileGet"]="doc_id= major_version= minor_version= attachment_id= attachment_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionAttachmentsAttachmentIdVersionsAttachmentVersionGet"]="doc_id= major_version= minor_version= attachment_id= attachment_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionDelete"]="doc_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionDocExportAnnotationsToCsvGet"]="doc_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionEventsPost"]="doc_id= major_version= minor_version= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionExportVideoAnnotationsGet"]="doc_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionFileGet"]="doc_id= major_version= minor_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionGet"]="doc_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut"]="doc_id= major_version= minor_version= Authorization: Content-Type: Accept: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsGet"]="doc_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsPost"]="doc_id= major_version= minor_version= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdDelete"]="doc_id= major_version= minor_version= relationship_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRelationshipsRelationshipIdGet"]="doc_id= major_version= minor_version= relationship_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsGet"]="doc_id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypeDelete"]="doc_id= major_version= minor_version= rendition_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypeGet"]="doc_id= major_version= minor_version= rendition_type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypePost"]="doc_id= major_version= minor_version= rendition_type= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionRenditionsRenditionTypePut"]="doc_id= major_version= minor_version= rendition_type= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsDocIdVersionsMajorVersionMinorVersionThumbnailGet"]="doc_id= major_version= minor_version= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsGet"]="named_filter= scope= versionscope= search= limit= sort= start= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsIdRolesGet"]="id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsIdRolesPost"]="id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsIdRolesRoleNameGet"]="id= role_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsIdVersionsMajorVersionMinorVersionLifecycleActionsGet"]="id= major_version= minor_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsIdVersionsMajorVersionMinorVersionLifecycleActionsNameVEntryRequirementsGet"]="id= major_version= minor_version= name__v= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsIdVersionsMajorVersionMinorVersionLifecycleActionsNameVPut"]="id= major_version= minor_version= name__v= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsLifecycleActionsPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsLifecycleActionsUserActionNamePut"]="user_action_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsPost"]="Authorization: Accept: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsRelationshipsBatchDelete"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsRelationshipsBatchPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsRenditionsBatchDelete"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsRenditionsBatchPost"]="idParam= largeSizeAsset= Authorization: Accept: Content-Type: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsRolesBatchDelete"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsRolesBatchPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTemplatesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTemplatesPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTemplatesPut"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTemplatesTemplateNameDelete"]="template_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTemplatesTemplateNameFileGet"]="template_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTemplatesTemplateNameGet"]="template_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTemplatesTemplateNamePut"]="template_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsTokensPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsVersionsBatchActionsFileextractPost"]="source= renditions= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsVersionsBatchDelete"]="idParam= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDocumentsVersionsBatchPost"]="idParam= Authorization: Accept: Content-Type: X-VaultAPI-MigrationMode: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDomainGet"]="include_application= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsDomainsGet"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsEdlMatchedDocumentsBatchActionsAddPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsEdlMatchedDocumentsBatchActionsRemovePost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsGroupsAutoGet"]="limit= offset= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsGroupsGet"]="includeImplied= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsGroupsGroupIdDelete"]="group_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsGroupsGroupIdGet"]="group_id= includeImplied= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsGroupsGroupIdPut"]="group_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsGroupsPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsLicensesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsActionsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsActionsWorkflowNameGet"]="workflow_name= Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsActionsWorkflowNamePost"]="workflow_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsGet"]="object__v= record_id__v= participant= status__v= offset= page_size= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksGet"]="object__v= record_id__v= assignee__v= status__v= offset= page_size= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsAcceptPost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsCancelPost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsCompletePost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsGet"]="task_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsMdwacceptPost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsMdwcompletePost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsMdwmanagecontentPost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsMdwreassignPost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsReassignPost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsTaskActionGet"]="task_id= task_action= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsUndoacceptPost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdActionsUpdateduedatePost"]="task_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsTasksTaskIdGet"]="task_id= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsWorkflowIdActionsGet"]="workflow_id= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsWorkflowIdActionsWorkflowActionGet"]="workflow_id= workflow_action= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsWorkflowIdActionsWorkflowActionPost"]="workflow_id= workflow_action= documents__sys= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsObjectworkflowsWorkflowIdGet"]="workflow_id= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsPicklistsGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsPicklistsPicklistNameGet"]="picklist_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsPicklistsPicklistNamePicklistValueNameDelete"]="picklist_name= picklist_value_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsPicklistsPicklistNamePicklistValueNamePut"]="picklist_name= picklist_value_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsPicklistsPicklistNamePost"]="picklist_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsPicklistsPicklistNamePut"]="picklist_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxActionsBuildproductionPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxActionsPromoteproductionPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxActionsRecheckusagePost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxBatchChangesizePost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxEntitlementsSetPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxNameDelete"]="name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxSnapshotApiNameActionsUpdatePost"]="api_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxSnapshotApiNameActionsUpgradePost"]="api_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxSnapshotApiNameDelete"]="api_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxSnapshotGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxSnapshotPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxVaultIdActionsRefreshPost"]="vault_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSandboxVaultIdGet"]="vault_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSecuritypoliciesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsSecuritypoliciesSecurityPolicyNameGet"]="security_policy_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersGet"]="vaults= exclude_vault_membership= exclude_app_licensing= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersIdGet"]="id= exclude_vault_membership= exclude_app_licensing= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersIdPermissionsGet"]="id= filter= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersIdPut"]="id= Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersMeGet"]="exclude_vault_membership= exclude_app_licensing= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersMePasswordPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersMePermissionsGet"]="filter= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersMePut"]="Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersPut"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersUserIdDelete"]="user_id= domain= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsUsersUserIdVaultMembershipVaultIdPut"]="user_id= vault_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["objectsVaultActionsComparePost"]="Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["objectsVaultActionsConfigreportPost"]="Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["queryComponentsPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["queryNextPagePost"]="next_page= Authorization: Accept: X-VaultAPI-DescribeQuery: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["queryPost"]="Authorization: Accept: X-VaultAPI-DescribeQuery: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["queryPreviousPagePost"]="previous_page= Authorization: Accept: X-VaultAPI-DescribeQuery: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2MeGet"]="attributes= excludedAttributes= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2MePut"]="attributes= excludedAttributes= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2ResourceTypesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2ResourceTypesTypeGet"]="type= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2SchemasGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2SchemasIdGet"]="id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2ServiceProviderConfigGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2TypeGet"]="type= filter= attributes= excludedAttributes= sortBy= sortOrder= startIndex= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2TypeIdGet"]="type= id= attributes= excludedAttributes= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2UsersGet"]="filter= attributes= excludedAttributes= sortBy= sortOrder= count= startIndex= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2UsersIdGet"]="id= filter= attributes= excludedAttributes= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2UsersIdPut"]="id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["scimV2UsersPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["servicesCertificateCertIdGet"]="cert_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesConfigurationModeActionsDisablePost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["servicesConfigurationModeActionsEnablePost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["servicesDirectdataFilesGet"]="extract_type= start_time= stop_time= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["servicesDirectdataFilesNameGet"]="name= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingItemsContentItemGet"]="item= Authorization: Accept: Range: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingItemsItemDelete"]="item= recursive= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingItemsItemGet"]="item= recursive= limit= format_result= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingItemsItemPut"]="item= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingItemsPost"]="Authorization: Accept: Content-MD5: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingUploadGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingUploadPost"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingUploadUploadSessionIdDelete"]="upload_session_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingUploadUploadSessionIdGet"]="upload_session_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingUploadUploadSessionIdPartsGet"]="upload_session_id= limit= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingUploadUploadSessionIdPost"]="upload_session_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesFileStagingUploadUploadSessionIdPut"]="upload_session_id= Authorization: Accept: Content-Type: X-VaultAPI-FilePartNumber: Content-MD5: X-VaultAPI-ClientID: "
+    operation_parameters["servicesJobsHistoriesGet"]="start_date= end_date= status= limit= offset= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesJobsJobIdErrorsGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesJobsJobIdGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesJobsJobIdSummaryGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesJobsJobIdTasksGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesJobsMonitorsGet"]="start_date= end_date= status= limit= offset= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesJobsStartNowJobIdPost"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesLoaderExtractPost"]="Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["servicesLoaderJobIdTasksTaskIdFailurelogGet"]="job_id= task_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesLoaderJobIdTasksTaskIdResultsGet"]="job_id= task_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesLoaderJobIdTasksTaskIdResultsRenditionsGet"]="job_id= task_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesLoaderJobIdTasksTaskIdSuccesslogGet"]="job_id= task_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesLoaderLoadPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesPackageActionsValidatePost"]="Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["servicesPackagePost"]="Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["servicesPackagePut"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesQueuesGet"]="Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesQueuesQueueNameActionsDisableDeliveryPut"]="queue_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesQueuesQueueNameActionsEnableDeliveryPut"]="queue_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesQueuesQueueNameActionsResetPut"]="queue_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesQueuesQueueNameGet"]="queue_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["servicesVobjectVaultPackageVPackageIdActionsValidatePost"]="package_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["sessionDelete"]="Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["uicodeDistributionsDistributionNameCodeGet"]="distribution_name= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["uicodeDistributionsDistributionNameDelete"]="distribution_name= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["uicodeDistributionsDistributionNameGet"]="distribution_name= Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["uicodeDistributionsGet"]="Accept: Authorization: X-VaultAPI-ClientID: "
+    operation_parameters["uicodeDistributionsPost"]="Accept: Authorization: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectVaultPackageVPackageIdActionsDeployPost"]="package_id= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectVaultPackageVPackageIdActionsDeployResultsGet"]="package_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsCascadedeleteResultsObjectNameJobStatusJobIdGet"]="object_name= job_status= job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsDeepcopyResultsObjectNameJobStatusJobIdGet"]="object_name= job_status= job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsEdlItemVActionsCreateplaceholderPost"]="Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsMergesJobIdLogGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsMergesJobIdResultsGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsMergesJobIdStatusGet"]="job_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameActionsActionNamePost"]="object_name= action_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameActionsChangetypePost"]="object_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameActionsMergePost"]="object_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameActionsRecalculaterollupsGet"]="object_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameActionsRecalculaterollupsPost"]="object_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameActionsUpdatecorporatecurrencyPut"]="object_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameAttachmentsBatchDelete"]="object_name= idParam= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameAttachmentsBatchPost"]="object_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameAttachmentsBatchPut"]="object_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameDelete"]="object_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameIdRolesRoleNameGet"]="object_name= id= role_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdActionsActionNameGet"]="object_name= object_record_id= action_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdActionsActionNamePost"]="object_name= object_record_id= action_name= Authorization: Content-Type: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdActionsCascadedeletePost"]="object_name= object_record_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdActionsDeepcopyPost"]="object_name= object_record_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdActionsGet"]="object_name= object_record_id= loc= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentFieldsAttachmentFieldNameFileGet"]="object_name= object_record_id= attachment_field_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentFieldsAttachmentFieldNameFilePost"]="object_name= object_record_id= attachment_field_name= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentFieldsFileGet"]="object_name= object_record_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdDelete"]="object_name= object_record_id= attachment_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdGet"]="object_name= object_record_id= attachment_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdPut"]="object_name= object_record_id= attachment_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionDelete"]="object_name= object_record_id= attachment_id= attachment_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionFileGet"]="object_name= object_record_id= attachment_id= attachment_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionGet"]="object_name= object_record_id= attachment_id= attachment_version= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost"]="object_name= object_record_id= attachment_id= attachment_version= restore= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsGet"]="object_name= object_record_id= attachment_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsFileGet"]="object_name= object_record_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsGet"]="object_name= object_record_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAttachmentsPost"]="object_name= object_record_id= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdAudittrailGet"]="object_name= object_record_id= start_date= end_date= format_result= limit= offset= events= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameObjectRecordIdGet"]="object_name= object_record_id= Authorization: Accept: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNamePost"]="object_name= idParam= Authorization: Content-Type: Accept: X-VaultAPI-MigrationMode: X-VaultAPI-NoTriggers: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNamePut"]="object_name= Authorization: Content-Type: Accept: X-VaultAPI-MigrationMode: X-VaultAPI-NoTriggers: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameRolesDelete"]="object_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsObjectNameRolesPost"]="object_name= Authorization: Accept: Content-Type: X-VaultAPI-ClientID: "
+    operation_parameters["vobjectsOutboundPackageVPackageIdDependenciesGet"]="package_id= Authorization: Accept: X-VaultAPI-ClientID: "
+
+    # An associative array of possible values for enum parameters
+    declare -A operation_parameters_enum_values
+    operation_parameters_enum_values["logsCodeDebugGet::include_inactive"]="true false"
+    operation_parameters_enum_values["logsCodeDebugGet::include_inactive"]="true false"
+    operation_parameters_enum_values["logsCodeDebugGet::include_inactive"]="true false"
+    operation_parameters_enum_values["logsCodeDebugGet::include_inactive"]="true false"
+    operation_parameters_enum_values["logsCodeDebugGet::include_inactive"]="true false"
+    operation_parameters_enum_values["metadataVobjectsGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameFieldsObjectFieldNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameFieldsObjectFieldNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameFieldsObjectFieldNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameFieldsObjectFieldNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameFieldsObjectFieldNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameFieldsObjectFieldNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameGet::loc"]="true false"
+    operation_parameters_enum_values["metadataVobjectsObjectNameGet::loc"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["notificationsHistoriesGet::all_dates"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::source"]="true false"
+    operation_parameters_enum_values["objectsBindersBinderIdVersionsMajorVersionMinorVersionActionsExportPost::docfield"]="true false"
+    operation_parameters_enum_values["objectsBindersPost::async"]="true false"
+    operation_parameters_enum_values["objectsBindersPost::async"]="true false"
+    operation_parameters_enum_values["objectsBindersPost::async"]="true false"
+    operation_parameters_enum_values["objectsBindersPost::async"]="true false"
+    operation_parameters_enum_values["objectsBindersPost::async"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsWorkflowNameGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsWorkflowNameGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsWorkflowNameGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsWorkflowNameGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsActionsWorkflowNameGet::loc"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::allversions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::allversions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::allversions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::allversions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::allversions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::allversions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsFileextractPost::allversions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsReclassifyPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsReclassifyPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsReclassifyPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsReclassifyPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchActionsReclassifyPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsBatchPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdFileGet::lockDocument"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdFileGet::lockDocument"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdFileGet::lockDocument"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdFileGet::lockDocument"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdFileGet::lockDocument"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsDocIdVersionsMajorVersionMinorVersionPut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsRenditionsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsRenditionsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsRenditionsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsRenditionsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsRenditionsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsRenditionsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsRenditionsBatchPost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::source"]="true false"
+    operation_parameters_enum_values["objectsDocumentsVersionsBatchActionsFileextractPost::renditions"]="true false"
+    operation_parameters_enum_values["objectsDomainGet::include_application"]="true false"
+    operation_parameters_enum_values["objectsDomainGet::include_application"]="true false"
+    operation_parameters_enum_values["objectsDomainGet::include_application"]="true false"
+    operation_parameters_enum_values["objectsDomainGet::include_application"]="true false"
+    operation_parameters_enum_values["objectsDomainGet::include_application"]="true false"
+    operation_parameters_enum_values["objectsGroupsGroupIdGet::includeImplied"]="true false"
+    operation_parameters_enum_values["objectsGroupsGroupIdGet::includeImplied"]="true false"
+    operation_parameters_enum_values["objectsGroupsGroupIdGet::includeImplied"]="true false"
+    operation_parameters_enum_values["objectsGroupsGroupIdGet::includeImplied"]="true false"
+    operation_parameters_enum_values["objectsGroupsGroupIdGet::includeImplied"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsTasksTaskIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsTasksTaskIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsTasksTaskIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsTasksTaskIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsTasksTaskIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsWorkflowIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsWorkflowIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsWorkflowIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsWorkflowIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsObjectworkflowsWorkflowIdGet::loc"]="true false"
+    operation_parameters_enum_values["objectsUsersUserIdDelete::domain"]="true false"
+    operation_parameters_enum_values["objectsUsersUserIdDelete::domain"]="true false"
+    operation_parameters_enum_values["objectsUsersUserIdDelete::domain"]="true false"
+    operation_parameters_enum_values["objectsUsersUserIdDelete::domain"]="true false"
+    operation_parameters_enum_values["objectsUsersUserIdDelete::domain"]="true false"
+    operation_parameters_enum_values["queryNextPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryNextPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryNextPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryNextPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryNextPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryNextPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPreviousPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPreviousPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPreviousPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPreviousPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPreviousPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["queryPreviousPagePost::X-VaultAPI-DescribeQuery"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdActionsGet::loc"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdActionsGet::loc"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdActionsGet::loc"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdActionsGet::loc"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdActionsGet::loc"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdActionsGet::loc"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNameObjectRecordIdAttachmentsAttachmentIdVersionsAttachmentVersionPost::restore"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePost::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-NoTriggers"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-MigrationMode"]="true false"
+    operation_parameters_enum_values["vobjectsObjectNamePut::X-VaultAPI-NoTriggers"]="true false"
+
+    #
+    # Check if this is OSX and use special __osx_init_completion function
+    #
+    if [[ `uname` =~ "Darwin" ]]; then
+        __osx_init_completion || return
+    else
+        _init_completion -s || return
+    fi
+
+
+    # Check if operation is already in the command line provided
+    for word in "${words[@]}"; do
+        if [[ -n $word && ${operations[$word]} ]]; then
+            operation="${word}"
+        fi
+    done
+
+    if [[ -z $operation ]]; then
+        case $prev in
+            --ciphers|--connect-timeout|-C|--continue-at|-F|--form|--form-string|\
+            --ftp-account|--ftp-alternative-to-user|-P|--ftp-port|-H|--header|-h|\
+            --help|--hostpubmd5|--keepalive-time|--krb|--limit-rate|--local-port|\
+            --mail-from|--mail-rcpt|--max-filesize|--max-redirs|-m|--max-time|\
+            --pass|--proto|--proto-redir|--proxy-user|--proxy1.0|-Q|--quote|-r|\
+            --range|-X|--request|--retry|--retry-delay|--retry-max-time|\
+            --socks5-gssapi-service|-t|--telnet-option|--tftp-blksize|-z|\
+            --time-cond|--url|-u|--user|-A|--user-agent|-V|--version|-w|\
+            --write-out|--resolve|--tlsuser|--tlspassword|--about)
+                return
+                ;;
+            -K|--config|-b|--cookie|-c|--cookie-jar|-D|--dump-header|--egd-file|\
+            --key|--libcurl|-o|--output|--random-file|-T|--upload-file|--trace|\
+            --trace-ascii|--netrc-file)
+                _filedir
+                return
+                ;;
+            --cacert|-E|--cert)
+                _filedir '@(c?(e)rt|cer|pem|der)'
+                return
+                ;;
+            --capath)
+                _filedir -d
+                return
+                ;;
+            --cert-type|--key-type)
+                COMPREPLY=( $( compgen -W 'DER PEM ENG' -- "$cur" ) )
+                return
+                ;;
+            --crlfile)
+                _filedir crl
+                return
+                ;;
+            -d|--data|--data-ascii|--data-binary|--data-urlencode)
+                if [[ $cur == \@* ]]; then
+                    cur=${cur:1}
+                    _filedir
+                    COMPREPLY=( "${COMPREPLY[@]/#/@}" )
+                fi
+                return
+                ;;
+            --delegation)
+                COMPREPLY=( $( compgen -W 'none policy always' -- "$cur" ) )
+                return
+                ;;
+            --engine)
+                COMPREPLY=( $( compgen -W 'list' -- "$cur" ) )
+                return
+                ;;
+            --ftp-method)
+                COMPREPLY=( $( compgen -W 'multicwd nocwd singlecwd' -- "$cur" ) )
+                return
+                ;;
+            --ftp-ssl-ccc-mode)
+                COMPREPLY=( $( compgen -W 'active passive' -- "$cur" ) )
+                return
+                ;;
+            --interface)
+                _available_interfaces -a
+                return
+                ;;
+            -x|--proxy|--socks4|--socks4a|--socks5|--socks5-hostname)
+                _known_hosts_real
+                return
+                ;;
+            --pubkey)
+                _filedir pub
+                return
+                ;;
+            --stderr)
+                COMPREPLY=( $( compgen -W '-' -- "$cur" ) )
+                _filedir
+                return
+                ;;
+            --tlsauthtype)
+                COMPREPLY=( $( compgen -W 'SRP' -- "$cur" ) )
+                return
+                ;;
+            --host)
+                COMPREPLY=( $( compgen -W 'http:// https://' -- "$cur" ) )
+                return
+                ;;
+            -ct|--content-type|-ac|--accept)
+                COMPREPLY=( $( compgen -W '${!mime_type_abbreviations[*]}' -- "$cur" ) )
+                return
+                ;;
+        esac
+    fi
+
+    #
+    # Complete the server address based on ~/.ssh/known_hosts
+    # and ~/.ssh/config
+    #
+    local prefix=${COMP_WORDS[COMP_CWORD-2]}
+    local colon=${COMP_WORDS[COMP_CWORD-1]}
+    if [[ "$colon" == ":" && ( $prefix == "https" || $prefix == "http" ) ]]; then
+        COMPREPLY=()
+        local comp_ssh_hosts=`[[ -f ~/.ssh/known_hosts ]] && \
+                              ( cat ~/.ssh/known_hosts | \
+                              grep '^[a-zA-Z0-9]' | \
+                              cut -f 1 -d ' ' | \
+                              sed -e s/,.*//g | \
+                              grep -v ^# | \
+                              uniq | \
+                              grep -v "\[" ) ;
+                              [[ -f ~/.ssh/config ]] && \
+                              ( cat ~/.ssh/config | \
+                              grep "^Host " | \
+                              awk '{print $2}' )`
+        COMPREPLY=( $( compgen -P '//' -W '${comp_ssh_hosts}' -- "${cur:2}") )
+        return
+    fi
+
+    #
+    # Complete the  and cURL's arguments
+    #
+    if [[ $cur == -* ]]; then
+        COMPREPLY=( $( compgen -W '$(_parse_help curl) $(_parse_help $1)' -- "$cur" ) )
+        return
+    fi
+
+    #
+    # If the argument starts with a letter this could be either an operation
+    # or an operation parameter
+    # When $cur is empty, suggest the list of operations by default
+    #
+    if [[ $cur =~ ^[A-Za-z_0-9]* ]]; then
+        # If operation has not been yet selected, suggest the list of operations
+        # otherwise suggest arguments of this operation as declared in the
+        # OpenAPI specification
+        if [[ -z $operation ]]; then
+            COMPREPLY=( $(compgen -W '${!operations[*]}' -- ${cur}) )
+        else
+            COMPREPLY=( $(compgen -W '${operation_parameters[$operation]}' -- ${cur}) )
+            compopt -o nospace
+        fi
+        return
+    fi
+
+} &&
+complete -F _ 
+
+# ex: ts=4 sw=4 et filetype=sh
