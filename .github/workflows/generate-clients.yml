@@ -115,7 +115,7 @@ jobs:
 
       - name: Publish client branch
         env:
-          LANG_BRANCH: generated-${{ matrix.lang }}-client
+          LANG_BRANCH: ${{ matrix.lang }}-client
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name  "github-actions[bot]"
@@ -127,3 +127,13 @@ jobs:
           git commit -m "feat(${{ matrix.lang }}): regenerate client from ${GITHUB_SHA}" \
             || echo "No changes"
           git push --force origin "$LANG_BRANCH"
+
+      - name: Copy client code to clients folder in main branch
+        run: |
+          mkdir -p clients/${{ matrix.lang }}
+          cp -r client/${{ matrix.lang }}/* clients/${{ matrix.lang }}/
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git add clients/${{ matrix.lang }}
+          git commit -m "chore: update clients/${{ matrix.lang }} SDK from ${GITHUB_SHA}" || echo "No changes"
+          git push origin main
