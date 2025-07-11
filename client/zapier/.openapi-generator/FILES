@@ -1,0 +1,10 @@
+.openapi-generator-ignore
+README.md
+apis/DefaultApi.js
+authentication.js
+index.js
+models/_vobjects__object_name__actions_merge_post_request_inner.js
+operations/actions.js
+package.json
+samples/DefaultApi.js
+utils/utils.js
