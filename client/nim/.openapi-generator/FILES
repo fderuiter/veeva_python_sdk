@@ -1,0 +1,7 @@
+.openapi-generator-ignore
+README.md
+config.nim
+openapiclient.nim
+openapiclient/apis/api_default.nim
+openapiclient/models/model__vobjects__object_name__actions_merge_post_request_inner.nim
+sample_client.nim
