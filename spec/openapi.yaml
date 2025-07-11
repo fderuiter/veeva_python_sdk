@@ -4,10 +4,16 @@ info:
   version: 1.0.0
   description: The latest GA version of the Vault REST API.
 servers:
-  - url: "{{vaultDNS}}"
-  - url: login.veevavault.com
+  - url: "{{vaultDNS}}/api/{version}"
+    variables:
+      version:
+        default: v25.1
+  - url: login.veevavault.com/api/{version}
+    variables:
+      version:
+        default: v25.1
 paths:
-  /api/{version}/delegation/vaults:
+  /delegation/vaults:
     parameters: []
     get:
       summary: Retrieve Delegations
@@ -39,7 +45,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/delegation/login:
+  /delegation/login:
     parameters: []
     post:
       summary: Initiate Delegated Session
@@ -74,7 +80,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/auth:
+  /auth:
     parameters: []
     post:
       summary: User Name and Password
@@ -202,7 +208,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/keep-alive:
+  /keep-alive:
     parameters: []
     post:
       summary: Session Keep Alive
@@ -234,7 +240,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/me:
+  /objects/users/me:
     parameters: []
     get:
       summary: Validate Session User
@@ -314,7 +320,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/session:
+  /session:
     parameters: []
     delete:
       summary: End Session
@@ -347,7 +353,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/directdata/files:
+  /services/directdata/files:
     parameters: []
     get:
       summary: Retrieve Available Direct Data Files
@@ -408,7 +414,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/directdata/files/{name}:
+  /services/directdata/files/{name}:
     parameters:
       - name: name
         in: path
@@ -449,7 +455,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/query:
+  /query:
     parameters: []
     post:
       summary: Submitting a Query
@@ -493,8 +499,13 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/query/{{next_page}}:
-    parameters: []
+  /query/{next_page}:
+    parameters:
+      - name: next_page
+        in: path
+        required: true
+        schema:
+          type: string
     post:
       summary: Next Page URL
       parameters:
@@ -537,8 +548,13 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/query/{{previous_page}}:
-    parameters: []
+  /query/{previous_page}:
+    parameters:
+      - name: previous_page
+        in: path
+        required: true
+        schema:
+          type: string
     post:
       summary: Previous Page URL
       parameters:
@@ -581,7 +597,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/configuration/{component_type}:
+  /configuration/{component_type}:
     parameters:
       - name: component_type
         in: path
@@ -618,7 +634,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/configuration/{component_type_and_record_name}:
+  /configuration/{component_type_and_record_name}:
     parameters:
       - name: component_type_and_record_name
         in: path
@@ -863,7 +879,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/vobjects/{object_name}/actions/canceldeployment:
+  /metadata/vobjects/{object_name}/actions/canceldeployment:
     parameters:
       - name: object_name
         in: path
@@ -932,7 +948,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/components:
+  /metadata/components:
     parameters: []
     get:
       summary: Retrieve All Component Metadata
@@ -964,7 +980,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/components/{component_type}:
+  /metadata/components/{component_type}:
     parameters:
       - name: component_type
         in: path
@@ -1002,7 +1018,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/properties:
+  /metadata/objects/documents/properties:
     parameters: []
     get:
       summary: Retrieve All Document Fields
@@ -1034,7 +1050,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/properties/find_common:
+  /metadata/objects/documents/properties/find_common:
     parameters: []
     post:
       summary: Retrieve Common Document Fields
@@ -1072,7 +1088,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/types:
+  /metadata/objects/documents/types:
     parameters: []
     get:
       summary: Retrieve All Document Types
@@ -1104,7 +1120,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/types/{type}:
+  /metadata/objects/documents/types/{type}:
     parameters:
       - name: type
         in: path
@@ -1142,7 +1158,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/types/{type}/subtypes/{subtype}:
+  /metadata/objects/documents/types/{type}/subtypes/{subtype}:
     parameters:
       - name: type
         in: path
@@ -1186,7 +1202,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/types/{type}/subtypes/{subtype}/classifications/{classification}:
+  /metadata/objects/documents/types/{type}/subtypes/{subtype}/classifications/{classification}:
     parameters:
       - name: type
         in: path
@@ -1236,7 +1252,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents:
+  /objects/documents:
     parameters: []
     get:
       summary: Retrieve All Documents
@@ -1362,7 +1378,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}:
+  /objects/documents/{doc_id}:
     parameters:
       - name: doc_id
         in: path
@@ -1524,7 +1540,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions:
+  /objects/documents/{doc_id}/versions:
     parameters:
       - name: doc_id
         in: path
@@ -1562,7 +1578,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}:
     parameters:
       - name: doc_id
         in: path
@@ -1692,7 +1708,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/file:
+  /objects/documents/{doc_id}/file:
     parameters:
       - name: doc_id
         in: path
@@ -1739,7 +1755,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/file:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/file:
     parameters:
       - name: doc_id
         in: path
@@ -1789,7 +1805,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/thumbnail:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/thumbnail:
     parameters:
       - name: doc_id
         in: path
@@ -1839,7 +1855,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/batch:
+  /objects/documents/batch:
     parameters: []
     post:
       summary: Create Multiple Documents
@@ -1983,7 +1999,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/batch/actions/reclassify:
+  /objects/documents/batch/actions/reclassify:
     parameters: []
     put:
       summary: Reclassify Multiple Documents
@@ -2036,7 +2052,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/versions/batch:
+  /objects/documents/versions/batch:
     parameters: []
     post:
       summary: Create Multiple Document Versions
@@ -2137,7 +2153,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/deletions/documents:
+  /objects/deletions/documents:
     parameters: []
     get:
       summary: Retrieve Deleted Document IDs
@@ -2195,7 +2211,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/lock:
+  /metadata/objects/documents/lock:
     parameters: []
     get:
       summary: Retrieve Document Lock Metadata
@@ -2227,7 +2243,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/lock:
+  /objects/documents/{doc_id}/lock:
     parameters:
       - name: doc_id
         in: path
@@ -2325,7 +2341,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/batch/lock:
+  /objects/documents/batch/lock:
     parameters: []
     delete:
       summary: Undo Collaborative Authoring Checkout
@@ -2363,7 +2379,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/renditions:
+  /objects/documents/{doc_id}/renditions:
     parameters:
       - name: doc_id
         in: path
@@ -2401,7 +2417,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/renditions:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/renditions:
     parameters:
       - name: doc_id
         in: path
@@ -2451,7 +2467,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/renditions/{rendition_type}:
+  /objects/documents/{doc_id}/renditions/{rendition_type}:
     parameters:
       - name: doc_id
         in: path
@@ -2605,7 +2621,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/renditions/{rendition_type}:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/renditions/{rendition_type}:
     parameters:
       - name: doc_id
         in: path
@@ -2763,7 +2779,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/renditions/batch:
+  /objects/documents/renditions/batch:
     parameters: []
     post:
       summary: Add Multiple Document Renditions
@@ -2868,7 +2884,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/batch/actions/rerender:
+  /objects/documents/batch/actions/rerender:
     parameters: []
     post:
       summary: Update Multiple Document Renditions
@@ -2906,7 +2922,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/attachments:
+  /objects/documents/{doc_id}/attachments:
     parameters:
       - name: doc_id
         in: path
@@ -2980,7 +2996,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/version/{major_version}/{minor_version}/attachments:
+  /objects/documents/{doc_id}/version/{major_version}/{minor_version}/attachments:
     parameters:
       - name: doc_id
         in: path
@@ -3030,7 +3046,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/versions:
+  /objects/documents/{doc_id}/attachments/{attachment_id}/versions:
     parameters:
       - name: doc_id
         in: path
@@ -3074,7 +3090,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/attachments/{attachment_id}/versions/{attachment_version}:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/attachments/{attachment_id}/versions/{attachment_version}:
     parameters:
       - name: doc_id
         in: path
@@ -3138,7 +3154,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}:
+  /objects/documents/{doc_id}/attachments/{attachment_id}:
     parameters:
       - name: doc_id
         in: path
@@ -3248,7 +3264,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/versions/{attachment_version}:
+  /objects/documents/{doc_id}/attachments/{attachment_id}/versions/{attachment_version}:
     parameters:
       - name: doc_id
         in: path
@@ -3366,7 +3382,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/file:
+  /objects/documents/{doc_id}/attachments/{attachment_id}/file:
     parameters:
       - name: doc_id
         in: path
@@ -3410,7 +3426,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/versions/{attachment_version}/file:
+  /objects/documents/{doc_id}/attachments/{attachment_id}/versions/{attachment_version}/file:
     parameters:
       - name: doc_id
         in: path
@@ -3460,7 +3476,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/attachments/{attachment_id}/versions/{attachment_version}/file:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/attachments/{attachment_id}/versions/{attachment_version}/file:
     parameters:
       - name: doc_id
         in: path
@@ -3522,7 +3538,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/attachments/file:
+  /objects/documents/{doc_id}/attachments/file:
     parameters:
       - name: doc_id
         in: path
@@ -3560,7 +3576,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/{major_version}/{minor_version}/attachments/file:
+  /objects/documents/{doc_id}/{major_version}/{minor_version}/attachments/file:
     parameters:
       - name: doc_id
         in: path
@@ -3610,7 +3626,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/attachments/batch:
+  /objects/documents/attachments/batch:
     parameters: []
     delete:
       summary: Delete Multiple Document Attachments
@@ -3720,7 +3736,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/annotations/types/{annotation_type}:
+  /metadata/objects/documents/annotations/types/{annotation_type}:
     parameters:
       - name: annotation_type
         in: path
@@ -3786,7 +3802,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/annotations/placemarks/types/{placemark_type}:
+  /metadata/objects/documents/annotations/placemarks/types/{placemark_type}:
     parameters:
       - name: placemark_type
         in: path
@@ -3824,7 +3840,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/annotations/references/types/{reference_type}:
+  /metadata/objects/documents/annotations/references/types/{reference_type}:
     parameters:
       - name: reference_type
         in: path
@@ -3861,7 +3877,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/annotations/batch:
+  /objects/documents/annotations/batch:
     parameters: []
     post:
       summary: Create Multiple Annotations
@@ -3979,7 +3995,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/annotations/replies/batch:
+  /objects/documents/annotations/replies/batch:
     parameters: []
     post:
       summary: Add Annotation Replies
@@ -4017,7 +4033,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations:
     parameters:
       - name: doc_id
         in: path
@@ -4128,7 +4144,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/{annotation_id}:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/{annotation_id}:
     parameters:
       - name: doc_id
         in: path
@@ -4186,7 +4202,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/{annotation_id}/replies:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/{annotation_id}/replies:
     parameters:
       - name: doc_id
         in: path
@@ -4244,7 +4260,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/annotations/file:
+  /objects/documents/{doc_id}/annotations/file:
     parameters:
       - name: doc_id
         in: path
@@ -4318,7 +4334,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/file:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/file:
     parameters:
       - name: doc_id
         in: path
@@ -4404,7 +4420,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/anchors:
+  /objects/documents/{doc_id}/anchors:
     parameters:
       - name: doc_id
         in: path
@@ -4442,7 +4458,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/doc-export-annotations-to-csv:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/doc-export-annotations-to-csv:
     parameters:
       - name: doc_id
         in: path
@@ -4492,7 +4508,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/export-video-annotations:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/export-video-annotations:
     parameters:
       - name: doc_id
         in: path
@@ -4546,7 +4562,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/types/{type}/relationships:
+  /metadata/objects/documents/types/{type}/relationships:
     parameters:
       - name: type
         in: path
@@ -4584,7 +4600,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/relationships:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/relationships:
     parameters:
       - name: doc_id
         in: path
@@ -4670,7 +4686,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/relationships/batch:
+  /objects/documents/relationships/batch:
     parameters: []
     post:
       summary: Create Multiple Document Relationships
@@ -4744,7 +4760,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/relationships/{relationship_id}:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/relationships/{relationship_id}:
     parameters:
       - name: doc_id
         in: path
@@ -4830,7 +4846,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/batch/actions/fileextract:
+  /objects/documents/batch/actions/fileextract:
     parameters: []
     post:
       summary: Export Documents
@@ -4895,7 +4911,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/versions/batch/actions/fileextract:
+  /objects/documents/versions/batch/actions/fileextract:
     parameters: []
     post:
       summary: Export Document Versions
@@ -4951,7 +4967,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/batch/actions/fileextract/{job_id}/results:
+  /objects/documents/batch/actions/fileextract/{job_id}/results:
     parameters:
       - name: job_id
         in: path
@@ -4991,7 +5007,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/events:
+  /metadata/objects/documents/events:
     parameters: []
     get:
       summary: Retrieve Document Event Types and Subtypes
@@ -5023,7 +5039,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/events/{event_type}/types/{event_subtype}:
+  /metadata/objects/documents/events/{event_type}/types/{event_subtype}:
     parameters:
       - name: event_type
         in: path
@@ -5067,7 +5083,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/events:
+  /objects/documents/{doc_id}/versions/{major_version}/{minor_version}/events:
     parameters:
       - name: doc_id
         in: path
@@ -5123,7 +5139,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/events:
+  /objects/documents/{doc_id}/events:
     parameters:
       - name: doc_id
         in: path
@@ -5161,7 +5177,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/documents/templates:
+  /metadata/objects/documents/templates:
     parameters: []
     get:
       summary: Retrieve Document Template Metadata
@@ -5193,7 +5209,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/templates:
+  /objects/documents/templates:
     parameters: []
     get:
       summary: Retrieve Document Template Collection
@@ -5297,7 +5313,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/templates/{template_name}:
+  /objects/documents/templates/{template_name}:
     parameters:
       - name: template_name
         in: path
@@ -5395,7 +5411,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/templates/{template_name}/file:
+  /objects/documents/templates/{template_name}/file:
     parameters:
       - name: template_name
         in: path
@@ -5433,7 +5449,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/query/documents/relationships/document_signature__sysr:
+  /metadata/query/documents/relationships/document_signature__sysr:
     parameters: []
     get:
       summary: Retrieve Document Signature Metadata
@@ -5465,7 +5481,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/query/archived_documents/relationships/document_signature__sysr:
+  /metadata/query/archived_documents/relationships/document_signature__sysr:
     parameters: []
     get:
       summary: Retrieve Archived Document Signature Metadata
@@ -5497,7 +5513,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/tokens:
+  /objects/documents/tokens:
     parameters: []
     post:
       summary: Document Tokens
@@ -5535,7 +5551,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}:
+  /objects/binders/{binder_id}:
     parameters:
       - name: binder_id
         in: path
@@ -5677,7 +5693,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/versions:
+  /objects/binders/{binder_id}/versions:
     parameters:
       - name: binder_id
         in: path
@@ -5715,7 +5731,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}:
+  /objects/binders/{binder_id}/versions/{major_version}/{minor_version}:
     parameters:
       - name: binder_id
         in: path
@@ -5831,7 +5847,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders:
+  /objects/binders:
     parameters: []
     post:
       summary: Create Binder
@@ -5881,7 +5897,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/actions:
+  /objects/binders/{binder_id}/actions:
     parameters:
       - name: binder_id
         in: path
@@ -5925,7 +5941,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/actions/export:
+  /objects/binders/{binder_id}/actions/export:
     parameters:
       - name: binder_id
         in: path
@@ -6005,7 +6021,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/actions/export:
+  /objects/binders/{binder_id}/versions/{major_version}/{minor_version}/actions/export:
     parameters:
       - name: binder_id
         in: path
@@ -6097,7 +6113,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/actions/export/{job_id}/results:
+  /objects/binders/actions/export/{job_id}/results:
     parameters:
       - name: job_id
         in: path
@@ -6137,7 +6153,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/relationships/{relationship_id}:
+  /objects/binders/{binder_id}/versions/{major_version}/{minor_version}/relationships/{relationship_id}:
     parameters:
       - name: binder_id
         in: path
@@ -6223,7 +6239,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/relationships:
+  /objects/binders/{binder_id}/versions/{major_version}/{minor_version}/relationships:
     parameters:
       - name: binder_id
         in: path
@@ -6279,7 +6295,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/sections/{section_id}:
+  /objects/binders/{binder_id}/sections/{section_id}:
     parameters:
       - name: binder_id
         in: path
@@ -6359,7 +6375,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/sections/{section_id}:
+  /objects/binders/{binder_id}/versions/{major_version}/{minor_version}/sections/{section_id}:
     parameters:
       - name: binder_id
         in: path
@@ -6418,7 +6434,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/sections:
+  /objects/binders/{binder_id}/sections:
     parameters:
       - name: binder_id
         in: path
@@ -6462,7 +6478,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/sections/{node_id}:
+  /objects/binders/{binder_id}/sections/{node_id}:
     parameters:
       - name: binder_id
         in: path
@@ -6512,7 +6528,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/documents:
+  /objects/binders/{binder_id}/documents:
     parameters:
       - name: binder_id
         in: path
@@ -6556,7 +6572,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/documents/{section_id}:
+  /objects/binders/{binder_id}/documents/{section_id}:
     parameters:
       - name: binder_id
         in: path
@@ -6636,7 +6652,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/binders/templates:
+  /metadata/objects/binders/templates:
     parameters: []
     get:
       summary: Retrieve Binder Template Metadata
@@ -6668,7 +6684,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/binders/templates/bindernodes:
+  /metadata/objects/binders/templates/bindernodes:
     parameters: []
     get:
       summary: Retrieve Binder Template Node Metadata
@@ -6700,7 +6716,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/templates:
+  /objects/binders/templates:
     parameters: []
     get:
       summary: Retrieve Binder Template Collection
@@ -6804,7 +6820,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/templates/{template_name}:
+  /objects/binders/templates/{template_name}:
     parameters:
       - name: template_name
         in: path
@@ -6872,7 +6888,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/templates/{template_name}/bindernodes:
+  /objects/binders/templates/{template_name}/bindernodes:
     parameters:
       - name: template_name
         in: path
@@ -6982,7 +6998,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/binding_rule:
+  /objects/binders/{binder_id}/binding_rule:
     parameters:
       - name: binder_id
         in: path
@@ -7026,7 +7042,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/sections/{node_id}/binding_rule:
+  /objects/binders/{binder_id}/sections/{node_id}/binding_rule:
     parameters:
       - name: binder_id
         in: path
@@ -7076,7 +7092,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/documents/{node_id}/binding_rule:
+  /objects/binders/{binder_id}/documents/{node_id}/binding_rule:
     parameters:
       - name: binder_id
         in: path
@@ -7126,7 +7142,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/configuration/Objecttype:
+  /configuration/Objecttype:
     parameters: []
     get:
       summary: Retrieve Details from All Object Types
@@ -7158,7 +7174,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/configuration/{object_name_and_object_type}:
+  /configuration/{object_name_and_object_type}:
     parameters:
       - name: object_name_and_object_type
         in: path
@@ -7207,7 +7223,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/actions/changetype:
+  /vobjects/{object_name}/actions/changetype:
     parameters:
       - name: object_name
         in: path
@@ -7251,7 +7267,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{id}/roles/{role_name}:
+  /vobjects/{object_name}/{id}/roles/{role_name}:
     parameters:
       - name: object_name
         in: path
@@ -7303,7 +7319,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/roles:
+  /vobjects/{object_name}/roles:
     parameters:
       - name: object_name
         in: path
@@ -7383,7 +7399,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments:
+  /vobjects/{object_name}/{object_record_id}/attachments:
     parameters:
       - name: object_name
         in: path
@@ -7465,7 +7481,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}:
+  /vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}:
     parameters:
       - name: object_name
         in: path
@@ -7589,7 +7605,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions:
+  /vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions:
     parameters:
       - name: object_name
         in: path
@@ -7641,7 +7657,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions/{attachment_version}:
+  /vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions/{attachment_version}:
     parameters:
       - name: object_name
         in: path
@@ -7771,7 +7787,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions/{attachment_version}/file:
+  /vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions/{attachment_version}/file:
     parameters:
       - name: object_name
         in: path
@@ -7828,7 +7844,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/file:
+  /vobjects/{object_name}/{object_record_id}/attachments/file:
     parameters:
       - name: object_name
         in: path
@@ -7874,7 +7890,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/attachments/batch:
+  /vobjects/{object_name}/attachments/batch:
     parameters:
       - name: object_name
         in: path
@@ -8000,7 +8016,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/vobjects/{object_name}/page_layouts:
+  /metadata/vobjects/{object_name}/page_layouts:
     parameters:
       - name: object_name
         in: path
@@ -8037,7 +8053,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/vobjects/{object_name}/page_layouts/{layout_name}:
+  /metadata/vobjects/{object_name}/page_layouts/{layout_name}:
     parameters:
       - name: object_name
         in: path
@@ -8081,7 +8097,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/actions/merge:
+  /vobjects/{object_name}/actions/merge:
     parameters:
       - name: object_name
         in: path
@@ -8139,7 +8155,7 @@ paths:
                     type: string
                   main_record_id:
                     type: string
-  /api/{version}/vobjects/merges/{job_id}/status:
+  /vobjects/merges/{job_id}/status:
     parameters:
       - name: job_id
         in: path
@@ -8180,7 +8196,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/merges/{job_id}/results:
+  /vobjects/merges/{job_id}/results:
     parameters:
       - name: job_id
         in: path
@@ -8221,7 +8237,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/merges/{job_id}/log:
+  /vobjects/merges/{job_id}/log:
     parameters:
       - name: job_id
         in: path
@@ -8262,7 +8278,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachment_fields/{attachment_field_name}/file:
+  /vobjects/{object_name}/{object_record_id}/attachment_fields/{attachment_field_name}/file:
     parameters:
       - name: object_name
         in: path
@@ -8342,7 +8358,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/attachment_fields/file:
+  /vobjects/{object_name}/{object_record_id}/attachment_fields/file:
     parameters:
       - name: object_name
         in: path
@@ -8386,7 +8402,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/actions/recalculaterollups:
+  /vobjects/{object_name}/actions/recalculaterollups:
     parameters:
       - name: object_name
         in: path
@@ -8456,7 +8472,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/vobjects/{object_name}:
+  /metadata/vobjects/{object_name}:
     parameters:
       - name: object_name
         in: path
@@ -8505,7 +8521,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/vobjects/{object_name}/fields/{object_field_name}:
+  /metadata/vobjects/{object_name}/fields/{object_field_name}:
     parameters:
       - name: object_name
         in: path
@@ -8560,7 +8576,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/vobjects:
+  /metadata/vobjects:
     parameters: []
     get:
       summary: Retrieve Object Collection
@@ -8601,7 +8617,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}:
+  /vobjects/{object_name}/{object_record_id}:
     parameters:
       - name: object_name
         in: path
@@ -8647,7 +8663,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}:
+  /vobjects/{object_name}:
     parameters:
       - name: object_name
         in: path
@@ -8827,7 +8843,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/actions/cascadedelete:
+  /vobjects/{object_name}/{object_record_id}/actions/cascadedelete:
     parameters:
       - name: object_name
         in: path
@@ -8873,7 +8889,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/cascadedelete/results/{object_name}/{job_status}/{job_id}:
+  /vobjects/cascadedelete/results/{object_name}/{job_status}/{job_id}:
     parameters:
       - name: object_name
         in: path
@@ -8923,7 +8939,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/actions/deepcopy:
+  /vobjects/{object_name}/{object_record_id}/actions/deepcopy:
     parameters:
       - name: object_name
         in: path
@@ -8975,7 +8991,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/deepcopy/results/{object_name}/{job_status}/{job_id}:
+  /vobjects/deepcopy/results/{object_name}/{job_status}/{job_id}:
     parameters:
       - name: object_name
         in: path
@@ -9029,7 +9045,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/deletions/vobjects/{object_name}:
+  /objects/deletions/vobjects/{object_name}:
     parameters:
       - name: object_name
         in: path
@@ -9069,7 +9085,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/limits:
+  /limits:
     parameters: []
     get:
       summary: Retrieve Limits on Objects
@@ -9101,7 +9117,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/actions/updatecorporatecurrency:
+  /vobjects/{object_name}/actions/updatecorporatecurrency:
     parameters:
       - name: object_name
         in: path
@@ -9147,7 +9163,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{id}/roles:
+  /objects/documents/{id}/roles:
     parameters:
       - name: id
         in: path
@@ -9220,7 +9236,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{id}/roles/{role_name}:
+  /objects/documents/{id}/roles/{role_name}:
     parameters:
       - name: id
         in: path
@@ -9264,7 +9280,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/roles/batch:
+  /objects/documents/roles/batch:
     parameters: []
     post:
       summary: Assign Users & Groups to Roles on Multiple Documents & Binders
@@ -9338,7 +9354,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/roles/{role_name_and_user_or_group}/{id}:
+  /objects/documents/{doc_id}/roles/{role_name_and_user_or_group}/{id}:
     parameters:
       - name: doc_id
         in: path
@@ -9391,7 +9407,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{id}/roles:
+  /objects/binders/{id}/roles:
     parameters:
       - name: id
         in: path
@@ -9464,7 +9480,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{id}/roles/{role_name}:
+  /objects/binders/{id}/roles/{role_name}:
     parameters:
       - name: id
         in: path
@@ -9508,7 +9524,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{binder_id}/roles/{role_name_and_user_or_group}/{id}:
+  /objects/binders/{binder_id}/roles/{role_name_and_user_or_group}/{id}:
     parameters:
       - name: binder_id
         in: path
@@ -9561,7 +9577,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks:
+  /objects/objectworkflows/tasks:
     parameters: []
     get:
       summary: Retrieve Workflow Tasks
@@ -9662,7 +9678,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}:
+  /objects/objectworkflows/tasks/{task_id}:
     parameters:
       - name: task_id
         in: path
@@ -9709,7 +9725,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions:
+  /objects/objectworkflows/tasks/{task_id}/actions:
     parameters:
       - name: task_id
         in: path
@@ -9747,7 +9763,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/{task_action}:
+  /objects/objectworkflows/tasks/{task_id}/actions/{task_action}:
     parameters:
       - name: task_id
         in: path
@@ -9801,7 +9817,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwaccept:
+  /objects/objectworkflows/tasks/{task_id}/actions/mdwaccept:
     parameters:
       - name: task_id
         in: path
@@ -9845,7 +9861,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/accept:
+  /objects/objectworkflows/tasks/{task_id}/actions/accept:
     parameters:
       - name: task_id
         in: path
@@ -9889,7 +9905,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/undoaccept:
+  /objects/objectworkflows/tasks/{task_id}/actions/undoaccept:
     parameters:
       - name: task_id
         in: path
@@ -9933,7 +9949,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwcomplete:
+  /objects/objectworkflows/tasks/{task_id}/actions/mdwcomplete:
     parameters:
       - name: task_id
         in: path
@@ -9977,7 +9993,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/complete:
+  /objects/objectworkflows/tasks/{task_id}/actions/complete:
     parameters:
       - name: task_id
         in: path
@@ -10021,7 +10037,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwreassign:
+  /objects/objectworkflows/tasks/{task_id}/actions/mdwreassign:
     parameters:
       - name: task_id
         in: path
@@ -10065,7 +10081,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/reassign:
+  /objects/objectworkflows/tasks/{task_id}/actions/reassign:
     parameters:
       - name: task_id
         in: path
@@ -10109,7 +10125,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/updateduedate:
+  /objects/objectworkflows/tasks/{task_id}/actions/updateduedate:
     parameters:
       - name: task_id
         in: path
@@ -10153,7 +10169,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/cancel:
+  /objects/objectworkflows/tasks/{task_id}/actions/cancel:
     parameters:
       - name: task_id
         in: path
@@ -10197,7 +10213,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwmanagecontent:
+  /objects/objectworkflows/tasks/{task_id}/actions/mdwmanagecontent:
     parameters:
       - name: task_id
         in: path
@@ -10241,7 +10257,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/object/workflow/actions:
+  /object/workflow/actions:
     parameters: []
     get:
       summary: Retrieve Bulk Workflow Actions
@@ -10273,7 +10289,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/object/workflow/actions/{action}:
+  /object/workflow/actions/{action}:
     parameters:
       - name: action
         in: path
@@ -10346,7 +10362,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/object/workflow/actions/cancelworkflows:
+  /object/workflow/actions/cancelworkflows:
     parameters: []
     post:
       summary: Cancel Workflows
@@ -10384,7 +10400,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/object/workflow/actions/canceltasks:
+  /object/workflow/actions/canceltasks:
     parameters: []
     post:
       summary: Cancel Workflow Tasks
@@ -10422,7 +10438,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/object/workflow/actions/reassigntasks:
+  /object/workflow/actions/reassigntasks:
     parameters: []
     post:
       summary: Reassign Workflow Tasks
@@ -10460,7 +10476,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/object/workflow/actions/replaceworkflowowner:
+  /object/workflow/actions/replaceworkflowowner:
     parameters: []
     post:
       summary: Replace Workflow Owner
@@ -10498,7 +10514,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows:
+  /objects/objectworkflows:
     parameters: []
     get:
       summary: Retrieve Workflows
@@ -10607,7 +10623,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/{workflow_id}:
+  /objects/objectworkflows/{workflow_id}:
     parameters:
       - name: workflow_id
         in: path
@@ -10654,7 +10670,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/{workflow_id}/actions:
+  /objects/objectworkflows/{workflow_id}/actions:
     parameters:
       - name: workflow_id
         in: path
@@ -10700,7 +10716,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/{workflow_id}/actions/{workflow_action}:
+  /objects/objectworkflows/{workflow_id}/actions/{workflow_action}:
     parameters:
       - name: workflow_id
         in: path
@@ -10793,7 +10809,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions:
+  /objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions:
     parameters:
       - name: id
         in: path
@@ -10845,7 +10861,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/lifecycle_actions:
+  /objects/documents/lifecycle_actions:
     parameters: []
     post:
       summary: Retrieve User Actions on Multiple Documents
@@ -10883,7 +10899,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}/entry_requirements:
+  /objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}/entry_requirements:
     parameters:
       - name: id
         in: path
@@ -10944,7 +10960,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}:
+  /objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}:
     parameters:
       - name: id
         in: path
@@ -11010,7 +11026,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/actions/{lifecycle_and_state_and_action}/{job_id}/results:
+  /objects/documents/actions/{lifecycle_and_state_and_action}/{job_id}/results:
     parameters:
       - name: lifecycle_and_state_and_action
         in: path
@@ -11058,7 +11074,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/lifecycle_actions/{user_action_name}:
+  /objects/documents/lifecycle_actions/{user_action_name}:
     parameters:
       - name: user_action_name
         in: path
@@ -11104,7 +11120,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions:
+  /objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions:
     parameters:
       - name: id
         in: path
@@ -11156,7 +11172,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/lifecycle_actions:
+  /objects/binders/lifecycle_actions:
     parameters: []
     post:
       summary: Retrieve User Actions on Multiple Binders
@@ -11194,7 +11210,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}/entry_requirements:
+  /objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}/entry_requirements:
     parameters:
       - name: id
         in: path
@@ -11255,7 +11271,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}:
+  /objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}:
     parameters:
       - name: id
         in: path
@@ -11321,7 +11337,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/binders/lifecycle_actions/{user_action_name}:
+  /objects/binders/lifecycle_actions/{user_action_name}:
     parameters:
       - name: user_action_name
         in: path
@@ -11367,7 +11383,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/configuration/role_assignment_rule:
+  /configuration/role_assignment_rule:
     parameters: []
     get:
       summary: Retrieve Lifecycle Role Assignment Rules (Default & Override)
@@ -11557,7 +11573,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/actions:
+  /objects/documents/actions:
     parameters: []
     get:
       summary: Retrieve All Document Workflows
@@ -11598,7 +11614,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/actions/{workflow_name}:
+  /objects/documents/actions/{workflow_name}:
     parameters:
       - name: workflow_name
         in: path
@@ -11681,7 +11697,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/actions:
+  /vobjects/{object_name}/{object_record_id}/actions:
     parameters:
       - name: object_name
         in: path
@@ -11734,7 +11750,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/actions/{action_name}:
+  /vobjects/{object_name}/{object_record_id}/actions/{action_name}:
     parameters:
       - name: object_name
         in: path
@@ -11824,7 +11840,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/actions/{action_name}:
+  /vobjects/{object_name}/actions/{action_name}:
     parameters:
       - name: object_name
         in: path
@@ -11878,7 +11894,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/actions:
+  /objects/objectworkflows/actions:
     parameters: []
     get:
       summary: Retrieve All Multi-Record Workflows
@@ -11910,7 +11926,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/objectworkflows/actions/{workflow_name}:
+  /objects/objectworkflows/actions/{workflow_name}:
     parameters:
       - name: workflow_name
         in: path
@@ -11977,7 +11993,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users:
+  /objects/users:
     parameters: []
     post:
       summary: Create Single User
@@ -12051,7 +12067,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/{id}:
+  /objects/users/{id}:
     parameters:
       - name: id
         in: path
@@ -12139,7 +12155,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/users:
+  /metadata/objects/users:
     parameters: []
     get:
       summary: Retrieve User Metadata
@@ -12171,7 +12187,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/:
+  /objects/users/:
     parameters: []
     get:
       summary: Retrieve All Users
@@ -12227,7 +12243,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/{user_id}:
+  /objects/users/{user_id}:
     parameters:
       - name: user_id
         in: path
@@ -12274,7 +12290,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/me/password:
+  /objects/users/me/password:
     parameters: []
     post:
       summary: Change My Password
@@ -12312,7 +12328,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/{user_id}/vault_membership/{vault_id}:
+  /objects/users/{user_id}/vault_membership/{vault_id}:
     parameters:
       - name: user_id
         in: path
@@ -12364,7 +12380,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/licenses:
+  /objects/licenses:
     parameters: []
     get:
       summary: Retrieve Application License Usage
@@ -12396,7 +12412,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/{id}/permissions:
+  /objects/users/{id}/permissions:
     parameters:
       - name: id
         in: path
@@ -12445,7 +12461,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/users/me/permissions:
+  /objects/users/me/permissions:
     parameters: []
     get:
       summary: Retrieve My User Permissions
@@ -12486,7 +12502,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/ServiceProviderConfig:
+  /scim/v2/ServiceProviderConfig:
     parameters: []
     get:
       summary: Retrieve SCIM Provider
@@ -12518,7 +12534,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/Schemas:
+  /scim/v2/Schemas:
     parameters: []
     get:
       summary: Retrieve All SCIM Schema Information
@@ -12550,7 +12566,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/Schemas/{id}:
+  /scim/v2/Schemas/{id}:
     parameters:
       - name: id
         in: path
@@ -12590,7 +12606,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/ResourceTypes:
+  /scim/v2/ResourceTypes:
     parameters: []
     get:
       summary: Retrieve All SCIM Resource Types
@@ -12622,7 +12638,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/ResourceTypes/{type}:
+  /scim/v2/ResourceTypes/{type}:
     parameters:
       - name: type
         in: path
@@ -12663,7 +12679,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/Users:
+  /scim/v2/Users:
     parameters: []
     get:
       summary: Retrieve All Users with SCIM
@@ -12807,7 +12823,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/Users/{id}:
+  /scim/v2/Users/{id}:
     parameters:
       - name: id
         in: path
@@ -12912,7 +12928,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/Me:
+  /scim/v2/Me:
     parameters: []
     get:
       summary: Retrieve Current User with SCIM
@@ -13022,7 +13038,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/{type}:
+  /scim/v2/{type}:
     parameters:
       - name: type
         in: path
@@ -13130,7 +13146,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/scim/v2/{type}/{id}:
+  /scim/v2/{type}/{id}:
     parameters:
       - name: type
         in: path
@@ -13201,7 +13217,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/groups:
+  /metadata/objects/groups:
     parameters: []
     get:
       summary: Retrieve Group Metadata
@@ -13233,7 +13249,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/groups:
+  /objects/groups:
     parameters: []
     get:
       summary: Retrieve All Groups
@@ -13312,7 +13328,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/groups/auto:
+  /objects/groups/auto:
     parameters: []
     get:
       summary: Retrieve Auto Managed Groups
@@ -13363,7 +13379,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/groups/{group_id}:
+  /objects/groups/{group_id}:
     parameters:
       - name: group_id
         in: path
@@ -13479,7 +13495,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/picklists:
+  /objects/picklists:
     parameters: []
     get:
       summary: Retrieve All Picklists
@@ -13511,7 +13527,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/picklists/{picklist_name}:
+  /objects/picklists/{picklist_name}:
     parameters:
       - name: picklist_name
         in: path
@@ -13623,7 +13639,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/picklists/{picklist_name}/{picklist_value_name}:
+  /objects/picklists/{picklist_name}/{picklist_value_name}:
     parameters:
       - name: picklist_name
         in: path
@@ -13707,7 +13723,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/edl_item__v/actions/createplaceholder:
+  /vobjects/edl_item__v/actions/createplaceholder:
     parameters: []
     post:
       summary: Create a Placeholder from an EDL Item
@@ -13745,7 +13761,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/composites/trees/{edl_hierarchy_or_template}:
+  /composites/trees/{edl_hierarchy_or_template}:
     parameters:
       - name: edl_hierarchy_or_template
         in: path
@@ -13788,7 +13804,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/composites/trees/{edl_hierarchy_or_template}/actions/listnodes:
+  /composites/trees/{edl_hierarchy_or_template}/actions/listnodes:
     parameters:
       - name: edl_hierarchy_or_template
         in: path
@@ -13832,7 +13848,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/composites/trees/edl_hierarchy__v/{parent_node_id}/children:
+  /composites/trees/edl_hierarchy__v/{parent_node_id}/children:
     parameters:
       - name: parent_node_id
         in: path
@@ -13912,7 +13928,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/edl_matched_documents/batch/actions/add:
+  /objects/edl_matched_documents/batch/actions/add:
     parameters: []
     post:
       summary: Add EDL Matched Documents
@@ -13950,7 +13966,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/edl_matched_documents/batch/actions/remove:
+  /objects/edl_matched_documents/batch/actions/remove:
     parameters: []
     post:
       summary: Remove EDL Matched Documents
@@ -13988,7 +14004,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/objects/securitypolicies:
+  /metadata/objects/securitypolicies:
     parameters: []
     get:
       summary: Retrieve Security Policy Metadata
@@ -14020,7 +14036,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/securitypolicies:
+  /objects/securitypolicies:
     parameters: []
     get:
       summary: Retrieve All Security Policies
@@ -14052,7 +14068,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/securitypolicies/{security_policy_name}:
+  /objects/securitypolicies/{security_policy_name}:
     parameters:
       - name: security_policy_name
         in: path
@@ -14092,7 +14108,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/domain:
+  /objects/domain:
     parameters: []
     get:
       summary: Retrieve Domain Information
@@ -14140,7 +14156,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/domains:
+  /objects/domains:
     parameters: []
     get:
       summary: Retrieve Domains
@@ -14178,7 +14194,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/package:
+  /services/package:
     parameters: []
     post:
       summary: Export Package
@@ -14246,7 +14262,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobject/vault_package__v/{package_id}/actions/deploy:
+  /vobject/vault_package__v/{package_id}/actions/deploy:
     parameters:
       - name: package_id
         in: path
@@ -14292,7 +14308,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobject/vault_package__v/{package_id}/actions/deploy/results:
+  /vobject/vault_package__v/{package_id}/actions/deploy/results:
     parameters:
       - name: package_id
         in: path
@@ -14332,7 +14348,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/outbound_package__v/{package_id}/dependencies:
+  /vobjects/outbound_package__v/{package_id}/dependencies:
     parameters:
       - name: package_id
         in: path
@@ -14372,7 +14388,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/query/components:
+  /query/components:
     parameters: []
     post:
       summary: Component Definition Query
@@ -14410,7 +14426,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/vault/actions/compare:
+  /objects/vault/actions/compare:
     parameters: []
     post:
       summary: Vault Compare
@@ -14442,7 +14458,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/vault/actions/configreport:
+  /objects/vault/actions/configreport:
     parameters: []
     post:
       summary: Vault Configuration Report
@@ -14474,7 +14490,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/package/actions/validate:
+  /services/package/actions/validate:
     parameters: []
     post:
       summary: Validate Package
@@ -14506,7 +14522,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/configuration_mode/actions/enable:
+  /services/configuration_mode/actions/enable:
     parameters: []
     post:
       summary: Enable Configuration Mode
@@ -14543,7 +14559,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/configuration_mode/actions/disable:
+  /services/configuration_mode/actions/disable:
     parameters: []
     post:
       summary: Disable Configuration Mode
@@ -14580,7 +14596,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/actions/buildproduction:
+  /objects/sandbox/actions/buildproduction:
     parameters: []
     post:
       summary: Build Production Vault
@@ -14618,7 +14634,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/actions/promoteproduction:
+  /objects/sandbox/actions/promoteproduction:
     parameters: []
     post:
       summary: Promote to Production
@@ -14656,7 +14672,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/snapshot:
+  /objects/sandbox/snapshot:
     parameters: []
     post:
       summary: Create Sandbox Snapshot
@@ -14724,7 +14740,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/snapshot/{api_name}:
+  /objects/sandbox/snapshot/{api_name}:
     parameters:
       - name: api_name
         in: path
@@ -14764,7 +14780,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/snapshot/{api_name}/actions/update:
+  /objects/sandbox/snapshot/{api_name}/actions/update:
     parameters:
       - name: api_name
         in: path
@@ -14804,7 +14820,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/snapshot/{api_name}/actions/upgrade:
+  /objects/sandbox/snapshot/{api_name}/actions/upgrade:
     parameters:
       - name: api_name
         in: path
@@ -14844,7 +14860,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox:
+  /objects/sandbox:
     parameters: []
     get:
       summary: Retrieve Sandboxes
@@ -14912,7 +14928,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/{vault_id}:
+  /objects/sandbox/{vault_id}:
     parameters:
       - name: vault_id
         in: path
@@ -14949,7 +14965,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/actions/recheckusage:
+  /objects/sandbox/actions/recheckusage:
     parameters: []
     post:
       summary: Recheck Sandbox Usage Limit
@@ -14987,7 +15003,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/batch/changesize:
+  /objects/sandbox/batch/changesize:
     parameters: []
     post:
       summary: Change Sandbox Size
@@ -15025,7 +15041,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/entitlements/set:
+  /objects/sandbox/entitlements/set:
     parameters: []
     post:
       summary: Set Sandbox Entitlements
@@ -15063,7 +15079,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/{vault_id}/actions/refresh:
+  /objects/sandbox/{vault_id}/actions/refresh:
     parameters:
       - name: vault_id
         in: path
@@ -15107,7 +15123,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/sandbox/{name}:
+  /objects/sandbox/{name}:
     parameters:
       - name: name
         in: path
@@ -15147,7 +15163,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/audittrail:
+  /metadata/audittrail:
     parameters: []
     get:
       summary: Retrieve Audit Types
@@ -15179,7 +15195,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/metadata/audittrail/{audit_trail_type}:
+  /metadata/audittrail/{audit_trail_type}:
     parameters:
       - name: audit_trail_type
         in: path
@@ -15219,7 +15235,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/audittrail/{audit_trail_type}:
+  /audittrail/{audit_trail_type}:
     parameters:
       - name: audit_trail_type
         in: path
@@ -15342,7 +15358,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/objects/documents/{doc_id}/audittrail:
+  /objects/documents/{doc_id}/audittrail:
     parameters:
       - name: doc_id
         in: path
@@ -15437,7 +15453,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/vobjects/{object_name}/{object_record_id}/audittrail:
+  /vobjects/{object_name}/{object_record_id}/audittrail:
     parameters:
       - name: object_name
         in: path
@@ -15538,7 +15554,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/logs/code/debug:
+  /logs/code/debug:
     parameters: []
     get:
       summary: Retrieve All Debug Logs
@@ -15625,7 +15641,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/logs/code/debug/{id}:
+  /logs/code/debug/{id}:
     parameters:
       - name: id
         in: path
@@ -15663,7 +15679,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/logs/code/debug/{id}/files:
+  /logs/code/debug/{id}/files:
     parameters:
       - name: id
         in: path
@@ -15701,7 +15717,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/logs/code/debug/{id}/actions/reset:
+  /logs/code/debug/{id}/actions/reset:
     parameters:
       - name: id
         in: path
@@ -15769,7 +15785,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code/profiler:
+  /code/profiler:
     parameters: []
     get:
       summary: Retrieve All Profiling Sessions
@@ -15837,7 +15853,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code/profiler/{session_name}:
+  /code/profiler/{session_name}:
     parameters:
       - name: session_name
         in: path
@@ -15905,7 +15921,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code/profiler/{session_name}/actions/end:
+  /code/profiler/{session_name}/actions/end:
     parameters:
       - name: session_name
         in: path
@@ -15943,7 +15959,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code/profiler/{session_name}/results:
+  /code/profiler/{session_name}/results:
     parameters:
       - name: session_name
         in: path
@@ -15981,7 +15997,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/notifications/histories:
+  /notifications/histories:
     parameters: []
     get:
       summary: Retrieve Email Notification Histories
@@ -16082,7 +16098,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/logs/api_usage:
+  /logs/api_usage:
     parameters: []
     get:
       summary: Download Daily API Usage
@@ -16132,7 +16148,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/logs/code/runtime:
+  /logs/code/runtime:
     parameters: []
     get:
       summary: Download SDK Runtime Log
@@ -16180,7 +16196,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/file_staging/upload:
+  /services/file_staging/upload:
     parameters: []
     post:
       summary: Create Resumable Upload Session
@@ -16212,7 +16228,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/file_staging/upload/{upload_session_id}:
+  /services/file_staging/upload/{upload_session_id}:
     parameters:
       - name: upload_session_id
         in: path
@@ -16363,7 +16379,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/file_staging/upload/:
+  /services/file_staging/upload/:
     parameters: []
     get:
       summary: List Upload Sessions
@@ -16395,7 +16411,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/file_staging/upload/{upload_session_id}/parts:
+  /services/file_staging/upload/{upload_session_id}/parts:
     parameters:
       - name: upload_session_id
         in: path
@@ -16441,7 +16457,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/file_staging/items/{item}:
+  /services/file_staging/items/{item}:
     parameters:
       - name: item
         in: path
@@ -16576,7 +16592,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/file_staging/items/content/{item}:
+  /services/file_staging/items/content/{item}:
     parameters:
       - name: item
         in: path
@@ -16626,7 +16642,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/file_staging/items:
+  /services/file_staging/items:
     parameters: []
     post:
       summary: Create Folder or File
@@ -16664,7 +16680,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/loader/extract:
+  /services/loader/extract:
     parameters: []
     post:
       summary: Extract Data Files
@@ -16702,7 +16718,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/loader/{job_id}/tasks/{task_id}/results:
+  /services/loader/{job_id}/tasks/{task_id}/results:
     parameters:
       - name: job_id
         in: path
@@ -16746,7 +16762,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/loader/{job_id}/tasks/{task_id}/results/renditions:
+  /services/loader/{job_id}/tasks/{task_id}/results/renditions:
     parameters:
       - name: job_id
         in: path
@@ -16790,7 +16806,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/loader/load:
+  /services/loader/load:
     parameters: []
     post:
       summary: Load Data Objects
@@ -16828,7 +16844,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/loader/{job_id}/tasks/{task_id}/successlog:
+  /services/loader/{job_id}/tasks/{task_id}/successlog:
     parameters:
       - name: job_id
         in: path
@@ -16872,7 +16888,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/loader/{job_id}/tasks/{task_id}/failurelog:
+  /services/loader/{job_id}/tasks/{task_id}/failurelog:
     parameters:
       - name: job_id
         in: path
@@ -16916,7 +16932,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/messages/{message_type}/language/{lang}/actions/export:
+  /messages/{message_type}/language/{lang}/actions/export:
     parameters:
       - name: message_type
         in: path
@@ -16965,7 +16981,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/messages/{message_type}/actions/import:
+  /messages/{message_type}/actions/import:
     parameters:
       - name: message_type
         in: path
@@ -17005,7 +17021,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/jobs/{job_id}/summary:
+  /services/jobs/{job_id}/summary:
     parameters:
       - name: job_id
         in: path
@@ -17045,7 +17061,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/jobs/{job_id}/errors:
+  /services/jobs/{job_id}/errors:
     parameters:
       - name: job_id
         in: path
@@ -17085,7 +17101,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/jobs/{job_id}:
+  /services/jobs/{job_id}:
     parameters:
       - name: job_id
         in: path
@@ -17123,7 +17139,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/jobs/{job_id}/tasks:
+  /services/jobs/{job_id}/tasks:
     parameters:
       - name: job_id
         in: path
@@ -17161,7 +17177,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/jobs/histories:
+  /services/jobs/histories:
     parameters: []
     get:
       summary: Retrieve Job Histories
@@ -17241,7 +17257,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/jobs/monitors:
+  /services/jobs/monitors:
     parameters: []
     get:
       summary: Retrieve Job Monitors
@@ -17322,7 +17338,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/jobs/start_now/{job_id}:
+  /services/jobs/start_now/{job_id}:
     parameters:
       - name: job_id
         in: path
@@ -17360,7 +17376,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/queues:
+  /services/queues:
     parameters: []
     get:
       summary: Retrieve All Queues
@@ -17392,7 +17408,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/queues/{queue_name}:
+  /services/queues/{queue_name}:
     parameters:
       - name: queue_name
         in: path
@@ -17430,7 +17446,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/queues/{queue_name}/actions/disable_delivery:
+  /services/queues/{queue_name}/actions/disable_delivery:
     parameters:
       - name: queue_name
         in: path
@@ -17468,7 +17484,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/queues/{queue_name}/actions/enable_delivery:
+  /services/queues/{queue_name}/actions/enable_delivery:
     parameters:
       - name: queue_name
         in: path
@@ -17506,7 +17522,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/queues/{queue_name}/actions/reset:
+  /services/queues/{queue_name}/actions/reset:
     parameters:
       - name: queue_name
         in: path
@@ -17544,7 +17560,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code/{class_name}:
+  /code/{class_name}:
     parameters:
       - name: class_name
         in: path
@@ -17612,7 +17628,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code/{class_name}/enable:
+  /code/{class_name}/enable:
     parameters:
       - name: class_name
         in: path
@@ -17656,7 +17672,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code/{class_name}/disable:
+  /code/{class_name}/disable:
     parameters:
       - name: class_name
         in: path
@@ -17700,7 +17716,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/code:
+  /code:
     parameters: []
     put:
       summary: Add or Replace Single Source Code File
@@ -17738,7 +17754,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/vobject/vault_package__v/{package_id}/actions/validate:
+  /services/vobject/vault_package__v/{package_id}/actions/validate:
     parameters:
       - name: package_id
         in: path
@@ -17779,7 +17795,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/services/certificate/{cert_id}:
+  /services/certificate/{cert_id}:
     parameters:
       - name: cert_id
         in: path
@@ -17819,7 +17835,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/uicode/distributions:
+  /uicode/distributions:
     parameters: []
     get:
       summary: Retrieve All Client Code Distribution Metadata
@@ -17887,7 +17903,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/uicode/distributions/{distribution_name}:
+  /uicode/distributions/{distribution_name}:
     parameters:
       - name: distribution_name
         in: path
@@ -17955,7 +17971,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{version}/uicode/distributions/{distribution_name}/code:
+  /uicode/distributions/{distribution_name}/code:
     parameters:
       - name: distribution_name
         in: path
