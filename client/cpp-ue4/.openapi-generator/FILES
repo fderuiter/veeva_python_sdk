@@ -1,0 +1,14 @@
+.openapi-generator-ignore
+OpenAPI.Build.cs
+Private/OpenAPIBaseModel.cpp
+Private/OpenAPIDefaultApi.cpp
+Private/OpenAPIDefaultApiOperations.cpp
+Private/OpenAPIHelpers.cpp
+Private/OpenAPIModule.cpp
+Private/OpenAPIModule.h
+Private/OpenAPIVobjectsObjectNameActionsMergePostRequestInner.cpp
+Public/OpenAPIBaseModel.h
+Public/OpenAPIDefaultApi.h
+Public/OpenAPIDefaultApiOperations.h
+Public/OpenAPIHelpers.h
+Public/OpenAPIVobjectsObjectNameActionsMergePostRequestInner.h
