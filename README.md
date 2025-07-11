@@ -1,42 +1,104 @@
-# OpenAPI Template Repository
 
-This repository demonstrates how to host an OpenAPI specification and automate
-validation, documentation and client generation using GitHub Actions. The
-`spec/openapi.yaml` file contains an example API definition that can be
-replaced with your own.
+# Veeva Vault OpenAPI Client SDK Generator
 
-## Repository structure
+This project takes the Veeva Vault OpenAPI specification (`spec/openapi.yaml`) and automatically generates client SDKs for **all languages supported by the OpenAPI Generator** using GitHub Actions workflows.
 
-- `spec/openapi.yaml` – example OpenAPI 3.1 specification
-- `.github/workflows/` – GitHub Actions for validating the spec and generating
-  artifacts
+## How it works
 
-Fork or use this repository as a template when starting a new API project. After
-replacing the sample spec with your own, the provided workflows will validate
-and publish your API documentation and optional client libraries.
+Whenever the OpenAPI spec is updated, GitHub Actions will:
 
-## GitHub Actions overview
+1. Validate the OpenAPI spec.
+2. Generate client SDK code for every supported language listed below.
+3. Push the generated code for each language to its own dedicated branch named `generated-<language>-client`.
 
-The project includes several workflows that run on different branches or after
-successful validation. They are intended to show a full pipeline from authoring
-a spec to publishing docs.
+This means that updating the OpenAPI spec will automatically update all SDKs for every language, with each language's code isolated in its own branch for easy access and integration.
 
-### `openapi-staging-autofix.yml`
+## Supported languages
 
-* **Trigger:** Pushes to the `staging` branch or manual invocation.
-* **Purpose:** Validates the YAML syntax and automatically adds missing `title`
-  fields to schemas. The workflow checks out the `staging` branch, scans the
-  spec for schemas without titles (including inline schemas) and writes the
-  titles back. If changes are made they are committed directly to the same
-  branch. This keeps the specification tidy before merging it into `main`.
+The following languages and frameworks are supported:
 
-### `validate-openapi.yml`
+- ada
+- android
+- apex
+- bash
+- c
+- clojure
+- cpp-qt-client
+- cpp-restsdk
+- cpp-tiny (beta)
+- cpp-tizen
+- cpp-ue4 (beta)
+- crystal (beta)
+- csharp
+- dart
+- dart-dio
+- eiffel
+- elixir
+- elm
+- erlang-client
+- erlang-proper
+- gdscript
+- go
+- groovy
+- haskell-http-client
+- java
+- java-helidon-client (beta)
+- java-micronaut-client (beta)
+- javascript
+- javascript-apollo-deprecated (deprecated)
+- javascript-closure-angular (beta)
+- javascript-flowtyped
+- jaxrs-cxf-client
+- jetbrains-http-client (experimental)
+- jmeter
+- julia-client (beta)
+- k6 (beta)
+- kotlin
+- lua (beta)
+- n4js (beta)
+- nim (beta)
+- objc
+- ocaml
+- perl
+- php
+- php-dt (beta)
+- php-nextgen (beta)
+- powershell (beta)
+- python
+- python-pydantic-v1
+- r
+- ruby
+- rust
+- scala-akka
+- scala-gatling
+- scala-http4s
+- scala-pekko
+- scala-sttp
+- scala-sttp4 (beta)
+- scalaz
+- swift-combine
+- swift5
+- swift6 (beta)
+- typescript (experimental)
+- typescript-angular
+- typescript-aurelia
+- typescript-axios
+- typescript-fetch
+- typescript-inversify
+- typescript-jquery
+- typescript-nestjs (experimental)
+- typescript-node
+- typescript-redux-query
+- typescript-rxjs
+- xojo-client
+- zapier (beta)
 
-* **Trigger:** Pushes to the `main` branch or manual invocation.
-* **Purpose:** Runs the OpenAPI Generator CLI in validation mode to ensure the
-  specification is syntactically correct. This job acts as the gate for other
-  workflows. When it completes successfully it triggers documentation and client
-  generation jobs via the `workflow_run` event.
+## Branch workflow
+
+- Each language's generated SDK is pushed to its own branch: `generated-<language>-client`.
+- Any update to the OpenAPI spec will automatically regenerate and update all SDK branches.
+
+This makes it easy to keep all client SDKs up to date and accessible for any language supported by the OpenAPI Generator.
 
 ### `generate-clients.yml`
 
