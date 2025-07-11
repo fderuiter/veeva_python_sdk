@@ -1,0 +1,7 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+project.clj
+src/veeva_vault_api_v25/1/api/default.clj
+src/veeva_vault_api_v25/1/core.clj
+src/veeva_vault_api_v25/1/specs/_vobjects_object_name_actions_merge_post_request_inner.clj
