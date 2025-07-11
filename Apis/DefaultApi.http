@@ -1,0 +1,3073 @@
+## DefaultApi
+
+### Retrieve API Versions
+## Retrieve API Versions
+GET http://}/api/v25.1/api/
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Content File
+## Retrieve Content File
+GET http://}/api/v25.1/api/mdl/components/{{component_type_and_record_name}}/files
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Component Record (MDL)
+## Retrieve Component Record (MDL)
+GET http://}/api/v25.1/api/mdl/components/{{component_type_and_record_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Asynchronous MDL Script Results
+## Retrieve Asynchronous MDL Script Results
+GET http://}/api/v25.1/api/mdl/execute_async/{{job_id}}/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Execute MDL Script Asynchronously
+## Execute MDL Script Asynchronously
+POST http://}/api/v25.1/api/mdl/execute_async
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Execute MDL Script
+## Execute MDL Script
+POST http://}/api/v25.1/api/mdl/execute
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Upload Content File
+## Upload Content File
+POST http://}/api/v25.1/api/mdl/files
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Audit Details
+## Retrieve Audit Details
+GET http://}/api/v25.1/audittrail/{{audit_trail_type}}?startDate={{startDate}}&endDate={{endDate}}&allDates={{allDates}}&formatResult={{formatResult}}&limit={{limit}}&offset={{offset}}&objects={{objects}}&events={{events}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Authentication Type Discovery
+## Authentication Type Discovery
+POST http://}/api/v25.1/auth/discovery
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### OAuth 2.0 / OpenID Connect
+## OAuth 2.0 / OpenID Connect
+POST http://}/api/v25.1/auth/oauth/session/{{oath_oidc_profile_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### User Name and Password
+## User Name and Password
+POST http://}/api/v25.1/auth
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Source Code File
+## Delete Single Source Code File
+DELETE http://}/api/v25.1/code/{{class_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Disable Vault Extension
+## Disable Vault Extension
+PUT http://}/api/v25.1/code/{{class_name}}/disable
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Enable Vault Extension
+## Enable Vault Extension
+PUT http://}/api/v25.1/code/{{class_name}}/enable
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Single Source Code File
+## Retrieve Single Source Code File
+GET http://}/api/v25.1/code/{{class_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Profiling Sessions
+## Retrieve All Profiling Sessions
+GET http://}/api/v25.1/code/profiler
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Profiling Session
+## Create Profiling Session
+POST http://}/api/v25.1/code/profiler
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### End Profiling Session
+## End Profiling Session
+POST http://}/api/v25.1/code/profiler/{{session_name}}/actions/end
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Profiling Session
+## Delete Profiling Session
+DELETE http://}/api/v25.1/code/profiler/{{session_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Profiling Session
+## Retrieve Profiling Session
+GET http://}/api/v25.1/code/profiler/{{session_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Profiling Session Results
+## Download Profiling Session Results
+GET http://}/api/v25.1/code/profiler/{{session_name}}/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Add or Replace Single Source Code File
+## Add or Replace Single Source Code File
+PUT http://}/api/v25.1/code
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Specific Root Nodes
+## Retrieve Specific Root Nodes
+POST http://}/api/v25.1/composites/trees/{{edl_hierarchy_or_template}}/actions/listnodes
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Root Nodes
+## Retrieve All Root Nodes
+GET http://}/api/v25.1/composites/trees/{{edl_hierarchy_or_template}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve a Node&#39;s Children
+## Retrieve a Node&#39;s Children
+GET http://}/api/v25.1/composites/trees/edl_hierarchy__v/{{parent_node_id}}/children
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Node Order
+## Update Node Order
+PUT http://}/api/v25.1/composites/trees/edl_hierarchy__v/{{parent_node_id}}/children
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Component Record (XML/JSON)
+## Retrieve Component Record (XML/JSON)
+GET http://}/api/v25.1/configuration/{{component_type_and_record_name}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Component Record Collection
+## Retrieve Component Record Collection
+GET http://}/api/v25.1/configuration/{{component_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Details from a Specific Object
+## Retrieve Details from a Specific Object
+GET http://}/api/v25.1/configuration/{{object_name_and_object_type}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Details from All Object Types
+## Retrieve Details from All Object Types
+GET http://}/api/v25.1/configuration/Objecttype
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Lifecycle Role Assignment Override Rules
+## Delete Lifecycle Role Assignment Override Rules
+DELETE http://}/api/v25.1/configuration/role_assignment_rule
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Lifecycle Role Assignment Rules (Default &amp; Override)
+## Retrieve Lifecycle Role Assignment Rules (Default &amp; Override)
+GET http://}/api/v25.1/configuration/role_assignment_rule?lifecycleV={{lifecycleV}}&roleV={{roleV}}&productV={{productV}}&countryV={{countryV}}&studyV={{studyV}}&studyCountryV={{studyCountryV}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Lifecycle Role Assignment Override Rules
+## Create Lifecycle Role Assignment Override Rules
+POST http://}/api/v25.1/configuration/role_assignment_rule
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Lifecycle Role Assignment Rules (Default &amp; Override)
+## Update Lifecycle Role Assignment Rules (Default &amp; Override)
+PUT http://}/api/v25.1/configuration/role_assignment_rule
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Delegated Session
+## Initiate Delegated Session
+POST http://}/api/v25.1/delegation/login
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Delegations
+## Retrieve Delegations
+GET http://}/api/v25.1/delegation/vaults
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Session Keep Alive
+## Session Keep Alive
+POST http://}/api/v25.1/keep-alive
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Limits on Objects
+## Retrieve Limits on Objects
+GET http://}/api/v25.1/limits
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Daily API Usage
+## Download Daily API Usage
+GET http://}/api/v25.1/logs/api_usage?date={{date}}&logFormat={{logFormat}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Debug Logs
+## Retrieve All Debug Logs
+GET http://}/api/v25.1/logs/code/debug?userId={{userId}}&includeInactive={{includeInactive}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Debug Log
+## Delete Debug Log
+DELETE http://}/api/v25.1/logs/code/debug/{{id}}/actions/reset
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Reset Debug Log
+## Reset Debug Log
+POST http://}/api/v25.1/logs/code/debug/{{id}}/actions/reset
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Debug Log Files
+## Download Debug Log Files
+GET http://}/api/v25.1/logs/code/debug/{{id}}/files
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Single Debug Log
+## Retrieve Single Debug Log
+GET http://}/api/v25.1/logs/code/debug/{{id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Debug Log
+## Create Debug Log
+POST http://}/api/v25.1/logs/code/debug
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download SDK Runtime Log
+## Download SDK Runtime Log
+GET http://}/api/v25.1/logs/code/runtime?date={{date}}&logFormat={{logFormat}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Import Bulk Translation File
+## Import Bulk Translation File
+POST http://}/api/v25.1/messages/{{message_type}}/actions/import
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Bulk Translation File
+## Export Bulk Translation File
+POST http://}/api/v25.1/messages/{{message_type}}/language/{{lang}}/actions/export
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Audit Metadata
+## Retrieve Audit Metadata
+GET http://}/api/v25.1/metadata/audittrail/{{audit_trail_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Audit Types
+## Retrieve Audit Types
+GET http://}/api/v25.1/metadata/audittrail
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Component Type Metadata
+## Retrieve Component Type Metadata
+GET http://}/api/v25.1/metadata/components/{{component_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Component Metadata
+## Retrieve All Component Metadata
+GET http://}/api/v25.1/metadata/components
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Template Node Metadata
+## Retrieve Binder Template Node Metadata
+GET http://}/api/v25.1/metadata/objects/binders/templates/bindernodes
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Template Metadata
+## Retrieve Binder Template Metadata
+GET http://}/api/v25.1/metadata/objects/binders/templates
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Annotation Placemark Type Metadata
+## Retrieve Annotation Placemark Type Metadata
+GET http://}/api/v25.1/metadata/objects/documents/annotations/placemarks/types/{{placemark_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Annotation Reference Type Metadata
+## Retrieve Annotation Reference Type Metadata
+GET http://}/api/v25.1/metadata/objects/documents/annotations/references/types/{{reference_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Annotation Type Metadata
+## Retrieve Annotation Type Metadata
+GET http://}/api/v25.1/metadata/objects/documents/annotations/types/{{annotation_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Event SubType Metadata
+## Retrieve Document Event SubType Metadata
+GET http://}/api/v25.1/metadata/objects/documents/events/{{event_type}}/types/{{event_subtype}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Event Types and Subtypes
+## Retrieve Document Event Types and Subtypes
+GET http://}/api/v25.1/metadata/objects/documents/events
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Lock Metadata
+## Retrieve Document Lock Metadata
+GET http://}/api/v25.1/metadata/objects/documents/lock
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Common Document Fields
+## Retrieve Common Document Fields
+POST http://}/api/v25.1/metadata/objects/documents/properties/find_common
+Content-Type: {{contentType}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Document Fields
+## Retrieve All Document Fields
+GET http://}/api/v25.1/metadata/objects/documents/properties
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Template Metadata
+## Retrieve Document Template Metadata
+GET http://}/api/v25.1/metadata/objects/documents/templates
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Document Types
+## Retrieve All Document Types
+GET http://}/api/v25.1/metadata/objects/documents/types
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Type
+## Retrieve Document Type
+GET http://}/api/v25.1/metadata/objects/documents/types/{{type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Type Relationships
+## Retrieve Document Type Relationships
+GET http://}/api/v25.1/metadata/objects/documents/types/{{type}}/relationships
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Classification
+## Retrieve Document Classification
+GET http://}/api/v25.1/metadata/objects/documents/types/{{type}}/subtypes/{{subtype}}/classifications/{{classification}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Subtype
+## Retrieve Document Subtype
+GET http://}/api/v25.1/metadata/objects/documents/types/{{type}}/subtypes/{{subtype}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Group Metadata
+## Retrieve Group Metadata
+GET http://}/api/v25.1/metadata/objects/groups
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Security Policy Metadata
+## Retrieve Security Policy Metadata
+GET http://}/api/v25.1/metadata/objects/securitypolicies
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve User Metadata
+## Retrieve User Metadata
+GET http://}/api/v25.1/metadata/objects/users
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Archived Document Signature Metadata
+## Retrieve Archived Document Signature Metadata
+GET http://}/api/v25.1/metadata/query/archived_documents/relationships/document_signature__sysr
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Signature Metadata
+## Retrieve Document Signature Metadata
+GET http://}/api/v25.1/metadata/query/documents/relationships/document_signature__sysr
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Collection
+## Retrieve Object Collection
+GET http://}/api/v25.1/metadata/vobjects?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Cancel Raw Object Deployment
+## Cancel Raw Object Deployment
+POST http://}/api/v25.1/metadata/vobjects/{{object_name}}/actions/canceldeployment
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Field Metadata
+## Retrieve Object Field Metadata
+GET http://}/api/v25.1/metadata/vobjects/{{object_name}}/fields/{{object_field_name}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Metadata
+## Retrieve Object Metadata
+GET http://}/api/v25.1/metadata/vobjects/{{object_name}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Page Layouts
+## Retrieve Page Layouts
+GET http://}/api/v25.1/metadata/vobjects/{{object_name}}/page_layouts
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Page Layout Metadata
+## Retrieve Page Layout Metadata
+GET http://}/api/v25.1/metadata/vobjects/{{object_name}}/page_layouts/{{layout_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Email Notification Histories
+## Retrieve Email Notification Histories
+GET http://}/api/v25.1/notifications/histories?startDate={{startDate}}&endDate={{endDate}}&allDates={{allDates}}&formatResult={{formatResult}}&limit={{limit}}&offset={{offset}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Bulk Workflow Action Details
+## Retrieve Bulk Workflow Action Details
+GET http://}/api/v25.1/object/workflow/actions/{{action}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Workflow Actions on Multiple Workflows
+## Initiate Workflow Actions on Multiple Workflows
+POST http://}/api/v25.1/object/workflow/actions/{{action}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Cancel Workflow Tasks
+## Cancel Workflow Tasks
+POST http://}/api/v25.1/object/workflow/actions/canceltasks
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Cancel Workflows
+## Cancel Workflows
+POST http://}/api/v25.1/object/workflow/actions/cancelworkflows
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Bulk Workflow Actions
+## Retrieve Bulk Workflow Actions
+GET http://}/api/v25.1/object/workflow/actions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Reassign Workflow Tasks
+## Reassign Workflow Tasks
+POST http://}/api/v25.1/object/workflow/actions/reassigntasks
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Replace Workflow Owner
+## Replace Workflow Owner
+POST http://}/api/v25.1/object/workflow/actions/replaceworkflowowner
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Export Results
+## Retrieve Binder Export Results
+GET http://}/api/v25.1/objects/binders/actions/export/{{job_id}}/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Binder (Latest Version)
+## Export Binder (Latest Version)
+POST http://}/api/v25.1/objects/binders/{{binder_id}}/actions/export?source={{source}}&renditiontype={{renditiontype}}&docversion={{docversion}}&attachments={{attachments}}&export={{export}}&docfield={{docfield}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Refresh Binder Auto-Filing
+## Refresh Binder Auto-Filing
+POST http://}/api/v25.1/objects/binders/{{binder_id}}/actions
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Binding Rule
+## Update Binding Rule
+PUT http://}/api/v25.1/objects/binders/{{binder_id}}/binding_rule
+Content-Type: {{contentType}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Binder
+## Delete Binder
+DELETE http://}/api/v25.1/objects/binders/{{binder_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Binder Document Binding Rule
+## Update Binder Document Binding Rule
+PUT http://}/api/v25.1/objects/binders/{{binder_id}}/documents/{{node_id}}/binding_rule
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Add Document to Binder
+## Add Document to Binder
+POST http://}/api/v25.1/objects/binders/{{binder_id}}/documents
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Remove Document from Binder
+## Remove Document from Binder
+DELETE http://}/api/v25.1/objects/binders/{{binder_id}}/documents/{{section_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Move Document in Binder
+## Move Document in Binder
+PUT http://}/api/v25.1/objects/binders/{{binder_id}}/documents/{{section_id}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder
+## Retrieve Binder
+GET http://}/api/v25.1/objects/binders/{{binder_id}}?depth={{depth}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Binder Version
+## Create Binder Version
+POST http://}/api/v25.1/objects/binders/{{binder_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Binder
+## Update Binder
+PUT http://}/api/v25.1/objects/binders/{{binder_id}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Remove Users &amp; Groups from Roles on a Single Binder
+## Remove Users &amp; Groups from Roles on a Single Binder
+DELETE http://}/api/v25.1/objects/binders/{{binder_id}}/roles/{{role_name_and_user_or_group}}/{{id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Binder Section Binding Rule
+## Update Binder Section Binding Rule
+PUT http://}/api/v25.1/objects/binders/{{binder_id}}/sections/{{node_id}}/binding_rule
+Content-Type: {{contentType}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Binder Section
+## Update Binder Section
+PUT http://}/api/v25.1/objects/binders/{{binder_id}}/sections/{{node_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Binder Section
+## Create Binder Section
+POST http://}/api/v25.1/objects/binders/{{binder_id}}/sections
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Binder Section
+## Delete Binder Section
+DELETE http://}/api/v25.1/objects/binders/{{binder_id}}/sections/{{section_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Sections
+## Retrieve Binder Sections
+GET http://}/api/v25.1/objects/binders/{{binder_id}}/sections/{{section_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Binder Versions
+## Retrieve All Binder Versions
+GET http://}/api/v25.1/objects/binders/{{binder_id}}/versions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Binder (Specific Version)
+## Export Binder (Specific Version)
+POST http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}/actions/export?source={{source}}&renditiontype={{renditiontype}}&docversion={{docversion}}&attachments={{attachments}}&export={{export}}&docfield={{docfield}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Binder Version
+## Delete Binder Version
+DELETE http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Version
+## Retrieve Binder Version
+GET http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Binder Version
+## Update Binder Version
+PUT http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Binder Relationship
+## Create Binder Relationship
+POST http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}/relationships
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Binder Relationship
+## Delete Binder Relationship
+DELETE http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}/relationships/{{relationship_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Relationship
+## Retrieve Binder Relationship
+GET http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}/relationships/{{relationship_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Version Section
+## Retrieve Binder Version Section
+GET http://}/api/v25.1/objects/binders/{{binder_id}}/versions/{{major_version}}/{{minor_version}}/sections/{{section_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Binder Roles
+## Retrieve All Binder Roles
+GET http://}/api/v25.1/objects/binders/{{id}}/roles
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Assign Users &amp; Groups to Roles on a Single Binder
+## Assign Users &amp; Groups to Roles on a Single Binder
+POST http://}/api/v25.1/objects/binders/{{id}}/roles
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Role
+## Retrieve Document Role
+GET http://}/api/v25.1/objects/binders/{{id}}/roles/{{role_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder User Actions
+## Retrieve Binder User Actions
+GET http://}/api/v25.1/objects/binders/{{id}}/versions/{{major_version}}/{{minor_version}}/lifecycle_actions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Entry Criteria
+## Retrieve Binder Entry Criteria
+GET http://}/api/v25.1/objects/binders/{{id}}/versions/{{major_version}}/{{minor_version}}/lifecycle_actions/{{name__v}}/entry_requirements
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Binder User Action
+## Initiate Binder User Action
+PUT http://}/api/v25.1/objects/binders/{{id}}/versions/{{major_version}}/{{minor_version}}/lifecycle_actions/{{name__v}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve User Actions on Multiple Binders
+## Retrieve User Actions on Multiple Binders
+POST http://}/api/v25.1/objects/binders/lifecycle_actions
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Bulk Binder User Actions
+## Initiate Bulk Binder User Actions
+PUT http://}/api/v25.1/objects/binders/lifecycle_actions/{{user_action_name}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Binder
+## Create Binder
+POST http://}/api/v25.1/objects/binders?async={{async}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Template Collection
+## Retrieve Binder Template Collection
+GET http://}/api/v25.1/objects/binders/templates
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Binder Template
+## Create Binder Template
+POST http://}/api/v25.1/objects/binders/templates
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Binder Template
+## Update Binder Template
+PUT http://}/api/v25.1/objects/binders/templates
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Template Node Attributes
+## Retrieve Binder Template Node Attributes
+GET http://}/api/v25.1/objects/binders/templates/{{template_name}}/bindernodes
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Binder Template Node
+## Create Binder Template Node
+POST http://}/api/v25.1/objects/binders/templates/{{template_name}}/bindernodes
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Replace Binder Template Nodes
+## Replace Binder Template Nodes
+PUT http://}/api/v25.1/objects/binders/templates/{{template_name}}/bindernodes
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Binder Template
+## Delete Binder Template
+DELETE http://}/api/v25.1/objects/binders/templates/{{template_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Binder Template Attributes
+## Retrieve Binder Template Attributes
+GET http://}/api/v25.1/objects/binders/templates/{{template_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Deleted Document IDs
+## Retrieve Deleted Document IDs
+GET http://}/api/v25.1/objects/deletions/documents?startDate={{startDate}}&endDate={{endDate}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Deleted Object Record ID
+## Retrieve Deleted Object Record ID
+GET http://}/api/v25.1/objects/deletions/vobjects/{{object_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Document Workflows
+## Retrieve All Document Workflows
+GET http://}/api/v25.1/objects/documents/actions?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Controlled Copy Job Results
+## Download Controlled Copy Job Results
+GET http://}/api/v25.1/objects/documents/actions/{{lifecycle_and_state_and_action}}/{{job_id}}/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Workflow Details
+## Retrieve Document Workflow Details
+GET http://}/api/v25.1/objects/documents/actions/{{workflow_name}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Document Workflow
+## Initiate Document Workflow
+POST http://}/api/v25.1/objects/documents/actions/{{workflow_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Annotations
+## Delete Annotations
+DELETE http://}/api/v25.1/objects/documents/annotations/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Multiple Annotations
+## Create Multiple Annotations
+POST http://}/api/v25.1/objects/documents/annotations/batch
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Annotations
+## Update Annotations
+PUT http://}/api/v25.1/objects/documents/annotations/batch
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Add Annotation Replies
+## Add Annotation Replies
+POST http://}/api/v25.1/objects/documents/annotations/replies/batch
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Multiple Document Attachments
+## Delete Multiple Document Attachments
+DELETE http://}/api/v25.1/objects/documents/attachments/batch
+Accept: {{accept}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Multiple Document Attachments
+## Create Multiple Document Attachments
+POST http://}/api/v25.1/objects/documents/attachments/batch
+Accept: {{accept}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Multiple Document Attachment Descriptions
+## Update Multiple Document Attachment Descriptions
+PUT http://}/api/v25.1/objects/documents/attachments/batch
+Accept: {{accept}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Export Results
+## Retrieve Document Export Results
+GET http://}/api/v25.1/objects/documents/batch/actions/fileextract/{{job_id}}/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Documents
+## Export Documents
+POST http://}/api/v25.1/objects/documents/batch/actions/fileextract?source={{source}}&renditions={{renditions}}&allversions={{allversions}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Reclassify Multiple Documents
+## Reclassify Multiple Documents
+PUT http://}/api/v25.1/objects/documents/batch/actions/reclassify
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Multiple Document Renditions
+## Update Multiple Document Renditions
+POST http://}/api/v25.1/objects/documents/batch/actions/rerender
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Multiple Documents
+## Delete Multiple Documents
+DELETE http://}/api/v25.1/objects/documents/batch?idParam={{idParam}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Undo Collaborative Authoring Checkout
+## Undo Collaborative Authoring Checkout
+DELETE http://}/api/v25.1/objects/documents/batch/lock
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Multiple Documents
+## Create Multiple Documents
+POST http://}/api/v25.1/objects/documents/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Multiple Documents
+## Update Multiple Documents
+PUT http://}/api/v25.1/objects/documents/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Anchor IDs
+## Retrieve Anchor IDs
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/anchors
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Document Annotations to PDF
+## Export Document Annotations to PDF
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/annotations/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Import Document Annotations from PDF
+## Import Document Annotations from PDF
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/annotations/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Document Attachment
+## Delete Single Document Attachment
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Attachment
+## Download Document Attachment
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}/file
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Attachment Metadata
+## Retrieve Document Attachment Metadata
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Document Attachment Description
+## Update Document Attachment Description
+PUT http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Document Attachment Version
+## Delete Single Document Attachment Version
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Attachment Version
+## Download Document Attachment Version
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}/file
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Attachment Version Metadata
+## Retrieve Document Attachment Version Metadata
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Restore Document Attachment Version
+## Restore Document Attachment Version
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}?restore={{restore}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Attachment Versions
+## Retrieve Document Attachment Versions
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/{{attachment_id}}/versions
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download All Document Attachments
+## Download All Document Attachments
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/attachments/file
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Attachments
+## Retrieve Document Attachments
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/attachments
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Document Attachment
+## Create Document Attachment
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/attachments
+Accept: {{accept}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Complete Audit History for a Single Document
+## Retrieve Complete Audit History for a Single Document
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/audittrail?startDate={{startDate}}&endDate={{endDate}}&formatResult={{formatResult}}&limit={{limit}}&offset={{offset}}&events={{events}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Document
+## Delete Single Document
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Events
+## Retrieve Document Events
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/events
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document File
+## Download Document File
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/file?lockDocument={{lockDocument}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document
+## Retrieve Document
+GET http://}/api/v25.1/objects/documents/{{doc_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Document Lock
+## Delete Document Lock
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/lock
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Lock
+## Retrieve Document Lock
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/lock
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Document Lock
+## Create Document Lock
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/lock
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download All Document Version Attachments
+## Download All Document Version Attachments
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/{{major_version}}/{{minor_version}}/attachments/file
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Single Document Version
+## Create Single Document Version
+POST http://}/api/v25.1/objects/documents/{{doc_id}}?suppressRendition={{suppressRendition}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Single Document
+## Update Single Document
+PUT http://}/api/v25.1/objects/documents/{{doc_id}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Renditions
+## Retrieve Document Renditions
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/renditions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Document Rendition
+## Delete Single Document Rendition
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/renditions/{{rendition_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Rendition File
+## Download Document Rendition File
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/renditions/{{rendition_type}}?steadyState={{steadyState}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Add Single Document Rendition
+## Add Single Document Rendition
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/renditions/{{rendition_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content Type: {{content Type}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Replace Document Rendition
+## Replace Document Rendition
+PUT http://}/api/v25.1/objects/documents/{{doc_id}}/renditions/{{rendition_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Remove Users &amp; Groups from Roles on a Single Document
+## Remove Users &amp; Groups from Roles on a Single Document
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/roles/{{role_name_and_user_or_group}}/{{id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Version Attachments
+## Retrieve Document Version Attachments
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/version/{{major_version}}/{{minor_version}}/attachments
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Versions
+## Retrieve Document Versions
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Read Annotations by ID
+## Read Annotations by ID
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/annotations/{{annotation_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Read Replies of Parent Annotation
+## Read Replies of Parent Annotation
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/annotations/{{annotation_id}}/replies
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Document Version Annotations to PDF
+## Export Document Version Annotations to PDF
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/annotations/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Import Document Version Annotations from PDF
+## Import Document Version Annotations from PDF
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/annotations/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Read Annotations by Document Version and Type
+## Read Annotations by Document Version and Type
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/annotations?limit={{limit}}&offset={{offset}}&annotationTypes={{annotationTypes}}&paginationId={{paginationId}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Version Attachment Version
+## Download Document Version Attachment Version
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/attachments/{{attachment_id}}/versions/{{attachment_version}}/file
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Version Attachment Versions
+## Retrieve Document Version Attachment Versions
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/attachments/{{attachment_id}}/versions/{{attachment_version}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Document Version
+## Delete Single Document Version
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Version Notes as CSV
+## Retrieve Document Version Notes as CSV
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/doc-export-annotations-to-csv
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Document Event
+## Create Document Event
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/events
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Video Annotations
+## Retrieve Video Annotations
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/export-video-annotations
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Version File
+## Download Document Version File
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/file
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Version
+## Retrieve Document Version
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Document Version
+## Update Document Version
+PUT http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Relationships
+## Retrieve Document Relationships
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/relationships
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Single Document Relationship
+## Create Single Document Relationship
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/relationships
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Document Relationship
+## Delete Single Document Relationship
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/relationships/{{relationship_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Relationship
+## Retrieve Document Relationship
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/relationships/{{relationship_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Version Renditions
+## Retrieve Document Version Renditions
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/renditions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Document Version Rendition
+## Delete Document Version Rendition
+DELETE http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/renditions/{{rendition_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Version Rendition File
+## Download Document Version Rendition File
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/renditions/{{rendition_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Upload Document Version Rendition
+## Upload Document Version Rendition
+POST http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/renditions/{{rendition_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Replace Document Version Rendition
+## Replace Document Version Rendition
+PUT http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/renditions/{{rendition_type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Version Thumbnail File
+## Download Document Version Thumbnail File
+GET http://}/api/v25.1/objects/documents/{{doc_id}}/versions/{{major_version}}/{{minor_version}}/thumbnail
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Documents
+## Retrieve All Documents
+GET http://}/api/v25.1/objects/documents?namedFilter={{namedFilter}}&scope={{scope}}&versionscope={{versionscope}}&search={{search}}&limit={{limit}}&sort={{sort}}&start={{start}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Document Roles
+## Retrieve All Document Roles
+GET http://}/api/v25.1/objects/documents/{{id}}/roles
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Assign Users &amp; Groups to Roles on a Single Document
+## Assign Users &amp; Groups to Roles on a Single Document
+POST http://}/api/v25.1/objects/documents/{{id}}/roles
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Role
+## Retrieve Document Role
+GET http://}/api/v25.1/objects/documents/{{id}}/roles/{{role_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document User Actions
+## Retrieve Document User Actions
+GET http://}/api/v25.1/objects/documents/{{id}}/versions/{{major_version}}/{{minor_version}}/lifecycle_actions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Entry Criteria
+## Retrieve Document Entry Criteria
+GET http://}/api/v25.1/objects/documents/{{id}}/versions/{{major_version}}/{{minor_version}}/lifecycle_actions/{{name__v}}/entry_requirements
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Document User Action
+## Initiate Document User Action
+PUT http://}/api/v25.1/objects/documents/{{id}}/versions/{{major_version}}/{{minor_version}}/lifecycle_actions/{{name__v}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve User Actions on Multiple Documents
+## Retrieve User Actions on Multiple Documents
+POST http://}/api/v25.1/objects/documents/lifecycle_actions
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Bulk Document User Actions
+## Initiate Bulk Document User Actions
+PUT http://}/api/v25.1/objects/documents/lifecycle_actions/{{user_action_name}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Single Document
+## Create Single Document
+POST http://}/api/v25.1/objects/documents
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Multiple Document Relationships
+## Delete Multiple Document Relationships
+DELETE http://}/api/v25.1/objects/documents/relationships/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Multiple Document Relationships
+## Create Multiple Document Relationships
+POST http://}/api/v25.1/objects/documents/relationships/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Multiple Document Renditions
+## Delete Multiple Document Renditions
+DELETE http://}/api/v25.1/objects/documents/renditions/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Add Multiple Document Renditions
+## Add Multiple Document Renditions
+POST http://}/api/v25.1/objects/documents/renditions/batch?idParam={{idParam}}&largeSizeAsset={{largeSizeAsset}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Remove Users and Groups from Roles on Multiple Documents &amp; Binders
+## Remove Users and Groups from Roles on Multiple Documents &amp; Binders
+DELETE http://}/api/v25.1/objects/documents/roles/batch
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Assign Users &amp; Groups to Roles on Multiple Documents &amp; Binders
+## Assign Users &amp; Groups to Roles on Multiple Documents &amp; Binders
+POST http://}/api/v25.1/objects/documents/roles/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Template Collection
+## Retrieve Document Template Collection
+GET http://}/api/v25.1/objects/documents/templates
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Single Document Template
+## Create Single Document Template
+POST http://}/api/v25.1/objects/documents/templates
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Multiple Document Templates
+## Update Multiple Document Templates
+PUT http://}/api/v25.1/objects/documents/templates
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Basic Document Template
+## Delete Basic Document Template
+DELETE http://}/api/v25.1/objects/documents/templates/{{template_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Document Template File
+## Download Document Template File
+GET http://}/api/v25.1/objects/documents/templates/{{template_name}}/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Document Template Attributes
+## Retrieve Document Template Attributes
+GET http://}/api/v25.1/objects/documents/templates/{{template_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Single Document Template
+## Update Single Document Template
+PUT http://}/api/v25.1/objects/documents/templates/{{template_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Document Tokens
+## Document Tokens
+POST http://}/api/v25.1/objects/documents/tokens
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Document Versions
+## Export Document Versions
+POST http://}/api/v25.1/objects/documents/versions/batch/actions/fileextract?source={{source}}&renditions={{renditions}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Multiple Document Versions
+## Delete Multiple Document Versions
+DELETE http://}/api/v25.1/objects/documents/versions/batch?idParam={{idParam}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Multiple Document Versions
+## Create Multiple Document Versions
+POST http://}/api/v25.1/objects/documents/versions/batch?idParam={{idParam}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Domain Information
+## Retrieve Domain Information
+GET http://}/api/v25.1/objects/domain?includeApplication={{includeApplication}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Domains
+## Retrieve Domains
+GET http://}/api/v25.1/objects/domains
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Add EDL Matched Documents
+## Add EDL Matched Documents
+POST http://}/api/v25.1/objects/edl_matched_documents/batch/actions/add
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Remove EDL Matched Documents
+## Remove EDL Matched Documents
+POST http://}/api/v25.1/objects/edl_matched_documents/batch/actions/remove
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Auto Managed Groups
+## Retrieve Auto Managed Groups
+GET http://}/api/v25.1/objects/groups/auto?limit={{limit}}&offset={{offset}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Groups
+## Retrieve All Groups
+GET http://}/api/v25.1/objects/groups?includeImplied={{includeImplied}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Group
+## Delete Group
+DELETE http://}/api/v25.1/objects/groups/{{group_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Group
+## Retrieve Group
+GET http://}/api/v25.1/objects/groups/{{group_id}}?includeImplied={{includeImplied}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Group
+## Update Group
+PUT http://}/api/v25.1/objects/groups/{{group_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Group 
+## Create Group 
+POST http://}/api/v25.1/objects/groups
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Application License Usage
+## Retrieve Application License Usage
+GET http://}/api/v25.1/objects/licenses
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Multi-Record Workflows
+## Retrieve All Multi-Record Workflows
+GET http://}/api/v25.1/objects/objectworkflows/actions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Multi-Record Workflow Details
+## Retrieve Multi-Record Workflow Details
+GET http://}/api/v25.1/objects/objectworkflows/actions/{{workflow_name}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Multi-Record Workflow
+## Initiate Multi-Record Workflow
+POST http://}/api/v25.1/objects/objectworkflows/actions/{{workflow_name}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflows
+## Retrieve Workflows
+GET http://}/api/v25.1/objects/objectworkflows?objectV={{objectV}}&recordIdV={{recordIdV}}&participant={{participant}}&statusV={{statusV}}&offset={{offset}}&pageSize={{pageSize}}&loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflow Tasks
+## Retrieve Workflow Tasks
+GET http://}/api/v25.1/objects/objectworkflows/tasks?objectV={{objectV}}&recordIdV={{recordIdV}}&assigneeV={{assigneeV}}&statusV={{statusV}}&offset={{offset}}&pageSize={{pageSize}}&loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Accept Single Record Workflow Task
+## Accept Single Record Workflow Task
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/accept
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Cancel Workflow Task
+## Cancel Workflow Task
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/cancel
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Complete Single Record Workflow Task
+## Complete Single Record Workflow Task
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/complete
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflow Task Actions
+## Retrieve Workflow Task Actions
+GET http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Accept Multi-item Workflow Task
+## Accept Multi-item Workflow Task
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/mdwaccept
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Complete Multi-item Workflow Task
+## Complete Multi-item Workflow Task
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/mdwcomplete
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Manage Multi-Item Workflow Content
+## Manage Multi-Item Workflow Content
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/mdwmanagecontent
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Reassign Multi-item Workflow Task
+## Reassign Multi-item Workflow Task
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/mdwreassign
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Reassign Single Record Workflow Task
+## Reassign Single Record Workflow Task
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/reassign
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflow Task Action Details
+## Retrieve Workflow Task Action Details
+GET http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/{{task_action}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Undo Workflow Task Acceptance
+## Undo Workflow Task Acceptance
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/undoaccept
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Workflow Task Due Date
+## Update Workflow Task Due Date
+POST http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}/actions/updateduedate
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflow Task Details
+## Retrieve Workflow Task Details
+GET http://}/api/v25.1/objects/objectworkflows/tasks/{{task_id}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflow Actions
+## Retrieve Workflow Actions
+GET http://}/api/v25.1/objects/objectworkflows/{{workflow_id}}/actions?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflow Action Details
+## Retrieve Workflow Action Details
+GET http://}/api/v25.1/objects/objectworkflows/{{workflow_id}}/actions/{{workflow_action}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Workflow Action
+## Initiate Workflow Action
+POST http://}/api/v25.1/objects/objectworkflows/{{workflow_id}}/actions/{{workflow_action}}?documentsSys={{documentsSys}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Workflow Details
+## Retrieve Workflow Details
+GET http://}/api/v25.1/objects/objectworkflows/{{workflow_id}}?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Picklists
+## Retrieve All Picklists
+GET http://}/api/v25.1/objects/picklists
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Picklist Values
+## Retrieve Picklist Values
+GET http://}/api/v25.1/objects/picklists/{{picklist_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Inactivate Picklist Value
+## Inactivate Picklist Value
+DELETE http://}/api/v25.1/objects/picklists/{{picklist_name}}/{{picklist_value_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Picklist Value
+## Update Picklist Value
+PUT http://}/api/v25.1/objects/picklists/{{picklist_name}}/{{picklist_value_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Picklist Values
+## Create Picklist Values
+POST http://}/api/v25.1/objects/picklists/{{picklist_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Picklist Value Label
+## Update Picklist Value Label
+PUT http://}/api/v25.1/objects/picklists/{{picklist_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Build Production Vault
+## Build Production Vault
+POST http://}/api/v25.1/objects/sandbox/actions/buildproduction
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Promote to Production
+## Promote to Production
+POST http://}/api/v25.1/objects/sandbox/actions/promoteproduction
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Recheck Sandbox Usage Limit
+## Recheck Sandbox Usage Limit
+POST http://}/api/v25.1/objects/sandbox/actions/recheckusage
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Change Sandbox Size
+## Change Sandbox Size
+POST http://}/api/v25.1/objects/sandbox/batch/changesize
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Set Sandbox Entitlements
+## Set Sandbox Entitlements
+POST http://}/api/v25.1/objects/sandbox/entitlements/set
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Sandboxes
+## Retrieve Sandboxes
+GET http://}/api/v25.1/objects/sandbox
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Sandbox
+## Delete Sandbox
+DELETE http://}/api/v25.1/objects/sandbox/{{name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create or Refresh Sandbox
+## Create or Refresh Sandbox
+POST http://}/api/v25.1/objects/sandbox
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Sandbox Snapshot
+## Update Sandbox Snapshot
+POST http://}/api/v25.1/objects/sandbox/snapshot/{{api_name}}/actions/update
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Upgrade Sandbox Snapshot
+## Upgrade Sandbox Snapshot
+POST http://}/api/v25.1/objects/sandbox/snapshot/{{api_name}}/actions/upgrade
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Sandbox Snapshot
+## Delete Sandbox Snapshot
+DELETE http://}/api/v25.1/objects/sandbox/snapshot/{{api_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Sandbox Snapshots
+## Retrieve Sandbox Snapshots
+GET http://}/api/v25.1/objects/sandbox/snapshot
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Sandbox Snapshot
+## Create Sandbox Snapshot
+POST http://}/api/v25.1/objects/sandbox/snapshot
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Refresh Sandbox from Snapshot
+## Refresh Sandbox from Snapshot
+POST http://}/api/v25.1/objects/sandbox/{{vault_id}}/actions/refresh
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Sandbox Details by ID
+## Retrieve Sandbox Details by ID
+GET http://}/api/v25.1/objects/sandbox/{{vault_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Security Policies
+## Retrieve All Security Policies
+GET http://}/api/v25.1/objects/securitypolicies
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Security Policy
+## Retrieve Security Policy
+GET http://}/api/v25.1/objects/securitypolicies/{{security_policy_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Users
+## Retrieve All Users
+GET http://}/api/v25.1/objects/users/?vaults={{vaults}}&excludeVaultMembership={{excludeVaultMembership}}&excludeAppLicensing={{excludeAppLicensing}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve User
+## Retrieve User
+GET http://}/api/v25.1/objects/users/{{id}}?excludeVaultMembership={{excludeVaultMembership}}&excludeAppLicensing={{excludeAppLicensing}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve User Permissions
+## Retrieve User Permissions
+GET http://}/api/v25.1/objects/users/{{id}}/permissions?filter={{filter}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Single User
+## Update Single User
+PUT http://}/api/v25.1/objects/users/{{id}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Validate Session User
+## Validate Session User
+GET http://}/api/v25.1/objects/users/me?excludeVaultMembership={{excludeVaultMembership}}&excludeAppLicensing={{excludeAppLicensing}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Change My Password
+## Change My Password
+POST http://}/api/v25.1/objects/users/me/password
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve My User Permissions
+## Retrieve My User Permissions
+GET http://}/api/v25.1/objects/users/me/permissions?filter={{filter}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update My User
+## Update My User
+PUT http://}/api/v25.1/objects/users/me
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Single User
+## Create Single User
+POST http://}/api/v25.1/objects/users
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Multiple Users
+## Update Multiple Users
+PUT http://}/api/v25.1/objects/users
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Disable User
+## Disable User
+DELETE http://}/api/v25.1/objects/users/{{user_id}}?domain={{domain}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Vault Membership
+## Update Vault Membership
+PUT http://}/api/v25.1/objects/users/{{user_id}}/vault_membership/{{vault_id}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Vault Compare
+## Vault Compare
+POST http://}/api/v25.1/objects/vault/actions/compare
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Vault Configuration Report
+## Vault Configuration Report
+POST http://}/api/v25.1/objects/vault/actions/configreport
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Component Definition Query
+## Component Definition Query
+POST http://}/api/v25.1/query/components
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Next Page URL
+## Next Page URL
+POST http://}/api/v25.1/query/{{next_page}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-DescribeQuery: {{xVaultAPIDescribeQuery}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Submitting a Query
+## Submitting a Query
+POST http://}/api/v25.1/query
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-DescribeQuery: {{xVaultAPIDescribeQuery}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Previous Page URL
+## Previous Page URL
+POST http://}/api/v25.1/query/{{previous_page}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-DescribeQuery: {{xVaultAPIDescribeQuery}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Current User with SCIM
+## Retrieve Current User with SCIM
+GET http://}/api/v25.1/scim/v2/Me?attributes={{attributes}}&excludedAttributes={{excludedAttributes}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Current User with SCIM
+## Update Current User with SCIM
+PUT http://}/api/v25.1/scim/v2/Me?attributes={{attributes}}&excludedAttributes={{excludedAttributes}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All SCIM Resource Types
+## Retrieve All SCIM Resource Types
+GET http://}/api/v25.1/scim/v2/ResourceTypes
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Single SCIM Resource Type
+## Retrieve Single SCIM Resource Type
+GET http://}/api/v25.1/scim/v2/ResourceTypes/{{type}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All SCIM Schema Information
+## Retrieve All SCIM Schema Information
+GET http://}/api/v25.1/scim/v2/Schemas
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Single SCIM Schema Information
+## Retrieve Single SCIM Schema Information
+GET http://}/api/v25.1/scim/v2/Schemas/{{id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve SCIM Provider
+## Retrieve SCIM Provider
+GET http://}/api/v25.1/scim/v2/ServiceProviderConfig
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve SCIM Resources
+## Retrieve SCIM Resources
+GET http://}/api/v25.1/scim/v2/{{type}}?filter={{filter}}&attributes={{attributes}}&excludedAttributes={{excludedAttributes}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&startIndex={{startIndex}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Single SCIM Resource
+## Retrieve Single SCIM Resource
+GET http://}/api/v25.1/scim/v2/{{type}}/{{id}}?attributes={{attributes}}&excludedAttributes={{excludedAttributes}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Users with SCIM
+## Retrieve All Users with SCIM
+GET http://}/api/v25.1/scim/v2/Users?filter={{filter}}&attributes={{attributes}}&excludedAttributes={{excludedAttributes}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&count={{count}}&startIndex={{startIndex}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Single User with SCIM
+## Retrieve Single User with SCIM
+GET http://}/api/v25.1/scim/v2/Users/{{id}}?filter={{filter}}&attributes={{attributes}}&excludedAttributes={{excludedAttributes}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update User with SCIM
+## Update User with SCIM
+PUT http://}/api/v25.1/scim/v2/Users/{{id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create User with SCIM
+## Create User with SCIM
+POST http://}/api/v25.1/scim/v2/Users
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Signing Certificate
+## Retrieve Signing Certificate
+GET http://}/api/v25.1/services/certificate/{{cert_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Disable Configuration Mode
+## Disable Configuration Mode
+POST http://}/api/v25.1/services/configuration_mode/actions/disable
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Enable Configuration Mode
+## Enable Configuration Mode
+POST http://}/api/v25.1/services/configuration_mode/actions/enable
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Available Direct Data Files
+## Retrieve Available Direct Data Files
+GET http://}/api/v25.1/services/directdata/files?extractType={{extractType}}&startTime={{startTime}}&stopTime={{stopTime}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Direct Data File
+## Download Direct Data File
+GET http://}/api/v25.1/services/directdata/files/{{name}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Item Content
+## Download Item Content
+GET http://}/api/v25.1/services/file_staging/items/content/{{item}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Range: {{range}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete File or Folder
+## Delete File or Folder
+DELETE http://}/api/v25.1/services/file_staging/items/{{item}}?recursive={{recursive}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### List Items at a Path
+## List Items at a Path
+GET http://}/api/v25.1/services/file_staging/items/{{item}}?recursive={{recursive}}&limit={{limit}}&formatResult={{formatResult}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Folder or File
+## Update Folder or File
+PUT http://}/api/v25.1/services/file_staging/items/{{item}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Folder or File
+## Create Folder or File
+POST http://}/api/v25.1/services/file_staging/items
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-MD5: {{contentMD5}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### List Upload Sessions
+## List Upload Sessions
+GET http://}/api/v25.1/services/file_staging/upload/
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Resumable Upload Session
+## Create Resumable Upload Session
+POST http://}/api/v25.1/services/file_staging/upload
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Abort Upload Session
+## Abort Upload Session
+DELETE http://}/api/v25.1/services/file_staging/upload/{{upload_session_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Get Upload Session Details
+## Get Upload Session Details
+GET http://}/api/v25.1/services/file_staging/upload/{{upload_session_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### List File Parts Uploaded to Session
+## List File Parts Uploaded to Session
+GET http://}/api/v25.1/services/file_staging/upload/{{upload_session_id}}/parts?limit={{limit}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Commit Upload Session
+## Commit Upload Session
+POST http://}/api/v25.1/services/file_staging/upload/{{upload_session_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Upload to a Session
+## Upload to a Session
+PUT http://}/api/v25.1/services/file_staging/upload/{{upload_session_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-FilePartNumber: {{xVaultAPIFilePartNumber}}
+Content-MD5: {{contentMD5}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Job Histories
+## Retrieve Job Histories
+GET http://}/api/v25.1/services/jobs/histories?startDate={{startDate}}&endDate={{endDate}}&status={{status}}&limit={{limit}}&offset={{offset}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Import Bulk Translation File Job Errors
+## Retrieve Import Bulk Translation File Job Errors
+GET http://}/api/v25.1/services/jobs/{{job_id}}/errors
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Job Status
+## Retrieve Job Status
+GET http://}/api/v25.1/services/jobs/{{job_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Import Bulk Translation File Job Summary
+## Retrieve Import Bulk Translation File Job Summary
+GET http://}/api/v25.1/services/jobs/{{job_id}}/summary
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve SDK Job Tasks
+## Retrieve SDK Job Tasks
+GET http://}/api/v25.1/services/jobs/{{job_id}}/tasks
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Job Monitors
+## Retrieve Job Monitors
+GET http://}/api/v25.1/services/jobs/monitors?startDate={{startDate}}&endDate={{endDate}}&status={{status}}&limit={{limit}}&offset={{offset}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Start Job
+## Start Job
+POST http://}/api/v25.1/services/jobs/start_now/{{job_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Extract Data Files
+## Extract Data Files
+POST http://}/api/v25.1/services/loader/extract
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Load Failure Log Results
+## Retrieve Load Failure Log Results
+GET http://}/api/v25.1/services/loader/{{job_id}}/tasks/{{task_id}}/failurelog
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Loader Extract Results
+## Retrieve Loader Extract Results
+GET http://}/api/v25.1/services/loader/{{job_id}}/tasks/{{task_id}}/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Loader Extract Renditions Results
+## Retrieve Loader Extract Renditions Results
+GET http://}/api/v25.1/services/loader/{{job_id}}/tasks/{{task_id}}/results/renditions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Load Success Log Results
+## Retrieve Load Success Log Results
+GET http://}/api/v25.1/services/loader/{{job_id}}/tasks/{{task_id}}/successlog
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Load Data Objects
+## Load Data Objects
+POST http://}/api/v25.1/services/loader/load
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Validate Package
+## Validate Package
+POST http://}/api/v25.1/services/package/actions/validate
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Export Package
+## Export Package
+POST http://}/api/v25.1/services/package
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Import Package
+## Import Package
+PUT http://}/api/v25.1/services/package
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Queues
+## Retrieve All Queues
+GET http://}/api/v25.1/services/queues
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Disable Delivery
+## Disable Delivery
+PUT http://}/api/v25.1/services/queues/{{queue_name}}/actions/disable_delivery
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Enable Delivery
+## Enable Delivery
+PUT http://}/api/v25.1/services/queues/{{queue_name}}/actions/enable_delivery
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Reset Queue
+## Reset Queue
+PUT http://}/api/v25.1/services/queues/{{queue_name}}/actions/reset
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Queue Status
+## Retrieve Queue Status
+GET http://}/api/v25.1/services/queues/{{queue_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Validate Imported Package
+## Validate Imported Package
+POST http://}/api/v25.1/services/vobject/vault_package__v/{{package_id}}/actions/validate
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### End Session
+## End Session
+DELETE http://}/api/v25.1/session
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Single Client Code Distribution
+## Download Single Client Code Distribution
+GET http://}/api/v25.1/uicode/distributions/{{distribution_name}}/code
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Single Client Code Distribution
+## Delete Single Client Code Distribution
+DELETE http://}/api/v25.1/uicode/distributions/{{distribution_name}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Single Client Code Distribution Metadata
+## Retrieve Single Client Code Distribution Metadata
+GET http://}/api/v25.1/uicode/distributions/{{distribution_name}}
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve All Client Code Distribution Metadata
+## Retrieve All Client Code Distribution Metadata
+GET http://}/api/v25.1/uicode/distributions
+Accept: {{accept}}
+Authorization: {{authorization}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Add or Replace Single Client Code Distribution
+## Add or Replace Single Client Code Distribution
+POST http://}/api/v25.1/uicode/distributions
+Accept: {{accept}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Deploy Package
+## Deploy Package
+POST http://}/api/v25.1/vobject/vault_package__v/{{package_id}}/actions/deploy
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Package Deploy Results
+## Retrieve Package Deploy Results
+GET http://}/api/v25.1/vobject/vault_package__v/{{package_id}}/actions/deploy/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Results of Cascade Delete Job
+## Retrieve Results of Cascade Delete Job
+GET http://}/api/v25.1/vobjects/cascadedelete/results/{{object_name}}/{{job_status}}/{{job_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Results of Deep Copy Job
+## Retrieve Results of Deep Copy Job
+GET http://}/api/v25.1/vobjects/deepcopy/results/{{object_name}}/{{job_status}}/{{job_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create a Placeholder from an EDL Item
+## Create a Placeholder from an EDL Item
+POST http://}/api/v25.1/vobjects/edl_item__v/actions/createplaceholder
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Merge Records Job Log
+## Download Merge Records Job Log
+GET http://}/api/v25.1/vobjects/merges/{{job_id}}/log
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Record Merge Results
+## Retrieve Record Merge Results
+GET http://}/api/v25.1/vobjects/merges/{{job_id}}/results
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Record Merge Status
+## Retrieve Record Merge Status
+GET http://}/api/v25.1/vobjects/merges/{{job_id}}/status
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Object Action on Multiple Records
+## Initiate Object Action on Multiple Records
+POST http://}/api/v25.1/vobjects/{{object_name}}/actions/{{action_name}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Change Object Type
+## Change Object Type
+POST http://}/api/v25.1/vobjects/{{object_name}}/actions/changetype
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Record Merge
+## Initiate Record Merge
+POST http://}/api/v25.1/vobjects/{{object_name}}/actions/merge
+Content-Type: application/json
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+{
+ 
+}
+
+
+### Retrieve Roll-up Field Recalculation Status
+## Retrieve Roll-up Field Recalculation Status
+GET http://}/api/v25.1/vobjects/{{object_name}}/actions/recalculaterollups
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Recalculate Roll-up Fields
+## Recalculate Roll-up Fields
+POST http://}/api/v25.1/vobjects/{{object_name}}/actions/recalculaterollups
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Corporate Currency Fields
+## Update Corporate Currency Fields
+PUT http://}/api/v25.1/vobjects/{{object_name}}/actions/updatecorporatecurrency
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Multiple Object Record Attachments
+## Delete Multiple Object Record Attachments
+DELETE http://}/api/v25.1/vobjects/{{object_name}}/attachments/batch?idParam={{idParam}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Multiple Object Record Attachments
+## Create Multiple Object Record Attachments
+POST http://}/api/v25.1/vobjects/{{object_name}}/attachments/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Multiple Object Record Attachment Descriptions
+## Update Multiple Object Record Attachment Descriptions
+PUT http://}/api/v25.1/vobjects/{{object_name}}/attachments/batch
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Object Records
+## Delete Object Records
+DELETE http://}/api/v25.1/vobjects/{{object_name}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Record Roles
+## Retrieve Object Record Roles
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{id}}/roles/{{role_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object User Actions Details
+## Retrieve Object User Actions Details
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/actions/{{action_name}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Initiate Object Action on a Single Record
+## Initiate Object Action on a Single Record
+POST http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/actions/{{action_name}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Cascade Delete Object Record
+## Cascade Delete Object Record
+POST http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/actions/cascadedelete
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Deep Copy Object Record
+## Deep Copy Object Record
+POST http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/actions/deepcopy
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Record User Actions
+## Retrieve Object Record User Actions
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/actions?loc={{loc}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Attachment Field File
+## Download Attachment Field File
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachment_fields/{{attachment_field_name}}/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Attachment Field File
+## Update Attachment Field File
+POST http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachment_fields/{{attachment_field_name}}/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download All Attachment Field Files
+## Download All Attachment Field Files
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachment_fields/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Object Record Attachment
+## Delete Object Record Attachment
+DELETE http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Record Attachment Metadata
+## Retrieve Object Record Attachment Metadata
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Object Record Attachment Description
+## Update Object Record Attachment Description
+PUT http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Delete Object Record Attachment Version
+## Delete Object Record Attachment Version
+DELETE http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download Object Record Attachment File
+## Download Object Record Attachment File
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Record Attachment Version Metadata
+## Retrieve Object Record Attachment Version Metadata
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Restore Object Record Attachment Version
+## Restore Object Record Attachment Version
+POST http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}/versions/{{attachment_version}}?restore={{restore}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Record Attachment Versions
+## Retrieve Object Record Attachment Versions
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/{{attachment_id}}/versions
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Download All Object Record Attachment Files
+## Download All Object Record Attachment Files
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments/file
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Record Attachments
+## Retrieve Object Record Attachments
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create Object Record Attachment
+## Create Object Record Attachment
+POST http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/attachments
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Complete Audit History for a Single Object Record
+## Retrieve Complete Audit History for a Single Object Record
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}/audittrail?startDate={{startDate}}&endDate={{endDate}}&formatResult={{formatResult}}&limit={{limit}}&offset={{offset}}&events={{events}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Object Record
+## Retrieve Object Record
+GET http://}/api/v25.1/vobjects/{{object_name}}/{{object_record_id}}
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Create &amp; Upsert Object Records
+## Create &amp; Upsert Object Records
+POST http://}/api/v25.1/vobjects/{{object_name}}?idParam={{idParam}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-NoTriggers: {{xVaultAPINoTriggers}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Update Object Records
+## Update Object Records
+PUT http://}/api/v25.1/vobjects/{{object_name}}
+Authorization: {{authorization}}
+Content-Type: {{contentType}}
+Accept: {{accept}}
+X-VaultAPI-MigrationMode: {{xVaultAPIMigrationMode}}
+X-VaultAPI-NoTriggers: {{xVaultAPINoTriggers}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Remove Users &amp; Groups from Roles on Object Records
+## Remove Users &amp; Groups from Roles on Object Records
+DELETE http://}/api/v25.1/vobjects/{{object_name}}/roles
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Assign Users &amp; Groups to Roles on Object Records
+## Assign Users &amp; Groups to Roles on Object Records
+POST http://}/api/v25.1/vobjects/{{object_name}}/roles
+Authorization: {{authorization}}
+Accept: {{accept}}
+Content-Type: {{contentType}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
+
+### Retrieve Outbound Package Dependencies
+## Retrieve Outbound Package Dependencies
+GET http://}/api/v25.1/vobjects/outbound_package__v/{{package_id}}/dependencies
+Authorization: {{authorization}}
+Accept: {{accept}}
+X-VaultAPI-ClientID: {{xVaultAPIClientID}}
