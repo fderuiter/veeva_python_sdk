@@ -1,0 +1,2 @@
+pub mod _vobjects__object_name__actions_merge_post_request_inner;
+pub use self::_vobjects__object_name__actions_merge_post_request_inner::VobjectsObjectNameActionsMergePostRequestInner;
